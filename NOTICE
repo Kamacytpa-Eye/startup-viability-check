@@ -1,5 +1,6 @@
 Startup Viability Check — a Claude skill by Maxim Mikhalyov (Vienna), 2026.
-Method, documentation, scripts and the benchmark library: (c) 2026 Maxim Mikhalyov, MIT License (see LICENSE).
+Method, documentation, scripts and the benchmark library: (c) 2026 Maxim Mikhalyov, licensed under CC BY-NC 4.0 (see LICENSE):
+free for non-commercial use with attribution; commercial use needs the author's written permission.
 
 Third-party components
 - Roboto font family (assets/fonts): Copyright 2011 The Roboto Project Authors, Apache License 2.0 — assets/fonts/LICENSE.txt

@@ -2,7 +2,7 @@
 
 **A first, honest financial sanity check for a startup: the founder's numbers against the market's, turned into a model, a verdict and a 90-day plan.**
 
-Made by [Maxim Mikhalyov](https://www.linkedin.com/in/maximmikhalyov) — strategy & product consultant (Vienna), Program Director at Moscow School of Management SKOLKOVO, startup mentor at WU VentureLAB Vienna, author of the *Provify* startup-validation service and of an Executive MBA thesis on how AI tools support early-stage founders. Free to use under the MIT License; feedback and benchmark contributions are welcome.
+Made by [Maxim Mikhalyov](https://www.linkedin.com/in/maximmikhalyov) — strategy & product consultant (Vienna), Program Director at Moscow School of Management SKOLKOVO, startup mentor at WU VentureLAB Vienna, author of the *Provify* startup-validation service and of an Executive MBA thesis on how AI tools support early-stage founders. Free for non-commercial use under CC BY-NC 4.0 — founders assessing their own venture, students, teachers, non-profit programmes. Commercial use (paid assessments, consulting engagements, bundling into a product) needs the author's written permission; write to max.mikhalyov@gmail.com. Feedback and benchmark contributions are welcome.
 
 ## What it does
 
@@ -68,4 +68,4 @@ Benchmark entries with a URL and a date are the most useful contribution: add a 
 
 ## License
 
-MIT — see `LICENSE` and `NOTICE`. Roboto fonts under the Apache License 2.0.
+Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0) — see `LICENSE` and `NOTICE`. Non-commercial use is free with attribution; commercial use requires written permission from the author. Roboto fonts under the Apache License 2.0.

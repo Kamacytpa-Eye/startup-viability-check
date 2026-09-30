@@ -6,3 +6,4 @@
 - Interactive HTML report + verified PDF from the same source; Excel workbook with formulas recalculated by LibreOffice and compared to Python.
 - Benchmark library with provenance flags (verified / stale / derived); `lib_audit.py`, `check_env.py`, `number_audit.py`.
 - Languages: English, Russian.
+- Licence: CC BY-NC 4.0.
