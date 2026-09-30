@@ -1,0 +1,2379 @@
+{
+ "startup": "CoPostly",
+ "date": "2026-09-27",
+ "lang": "ru",
+ "currency": "€",
+ "verdict": "Not assessable",
+ "verdict_text": "Пока это оценка типичного бизнеса такого рода, а не самой CoPostly: от компании известна только цена, остальные {{counts.filled_from_market|int}} цифр взяты по рынку. По рыночным оценкам такой сервис выходит в плюс с {{cases.market.breakeven_month|int}}-го месяца, а на старте ему нужно {{cases.market.peak_capital_need|money}} — {{capital_vs_round.position|text}}.",
+ "story": [
+  "CoPostly ведёт LinkedIn основателей под ключ за {{comparison.0.founder|money}} в месяц по подписке без договора на срок; команда — около четырёх человек. Своих цифр компания не дала, поэтому расчёт сделан для такого бизнеса «с нуля» по рынку.",
+  "На цене CoPostly такой бизнес покрывает расходы с {{cases.founder.breakeven_month|int}}-го месяца, до этого ему нужно {{cases.founder.peak_capital_need|money}}, а к третьему году он приносит {{cases.founder.milestones.m36.mrr|money}} в месяц.",
+  "Агентства за ту же услугу берут {{comparison.0.market_low|money}}–{{comparison.0.market_high|money}}; при средней цене тот же бизнес выходит в плюс с {{cases.market.breakeven_month|int}}-го месяца, тратит {{cases.market.peak_capital_need|money}} и к третьему году приносит {{cases.market.milestones.m36.mrr|money}} в месяц.",
+  "Цена — единственное отличие CoPostly от рынка, и оно стоит {{bridge_by_domain.pricing.peak_capital_need.delta|money}} стартового капитала; сильнее всего итог зависит от притока клиентов и стоимости команды, а они взяты по рынку.",
+  "Чтобы отчёт говорил о компании, нужны четыре числа из её учёта: клиенты и выручка сейчас, скорость ухода клиентов, договоры из звонков, объём работы на клиента; до этого планировать по худшему краю рынка."
+ ],
+ "evidence_basis": "Из {{counts.total|int}} исходных цифр от компании известна {{counts.founder_stated|int}} (опубликованная цена); {{counts.filled_from_market|int}} взяты по рынку; измеренных на самом бизнесе — {{counts.observed|int}}.",
+ "assumptions": {
+  "lead": "Экономика одного клиента здорова при любой цене из рыночного диапазона; единственное, в чём CoPostly расходится с рынком, — цена подписки, и от неё зависит, когда бизнес выходит в плюс и сколько денег нужно на старте.",
+  "stories": [
+   {
+    "domain": "pricing",
+    "belief": "Опубликованная цена — {{comparison.0.founder|money}} в месяц за полное ведение: стратегия, тексты, дизайн, публикация, отчёты; тариф с исходящими рассылками клиентам — €2 500 (обзор MagicPost, 2026). Сколько постов входит в тариф, компания не публикует — обзоры отмечают это как недостаток.",
+    "evidence": "Агентская подписка среднего уровня на 12–16 постов стоит {{comparison.0.market_low|money}}–{{comparison.0.market_high|money}} в месяц (Windmill Growth по данным MagicPost, расценки 2026, переведено в евро по курсу 0,92); фрилансеры берут $900–2 000. Цена CoPostly лежит ниже нижней границы агентского диапазона.",
+    "stakes": "При средней рыночной цене на старте нужно {{bridge_by_domain.pricing.peak_capital_need.market|money}}, при цене CoPostly — {{bridge_by_domain.pricing.peak_capital_need.if_founder_right|money}}; выход в плюс — {{bridge_by_domain.pricing.breakeven_month.market|month}} против {{bridge_by_domain.pricing.breakeven_month.if_founder_right|month}}; выручка на {{months|int}}-м месяце — {{bridge_by_domain.pricing.revenue_end.market|money}} против {{bridge_by_domain.pricing.revenue_end.if_founder_right|money}} в месяц.",
+    "test": "Посчитать по всем клиентам за последние 3 месяца, сколько постов и часов работы уходит на одного клиента в месяц. Если 12 и больше постов и 20 и больше часов — цена ниже рыночной примерно на 40 %, и для новых клиентов её стоит поднять; если объём вдвое меньше агентского — цена соответствует формату."
+   }
+  ]
+ },
+ "market_case": {
+  "lead": "По рыночным оценкам это сервисный бизнес с очень здоровой экономикой одного клиента и одним ограничением — сколько клиентов способна вести команда: выход в плюс с {{cases.market.breakeven_month|int}}-го месяца, {{cases.market.peak_capital_need|money}} на старте, {{cases.market.milestones.m36.mrr|money}} в месяц к {{months|int}}-му месяцу.",
+  "paragraphs": [
+   "Выручка растёт с {{cases.market.milestones.m12.mrr|money}} в месяц на 12-м месяце до {{cases.market.milestones.m36.mrr|money}} на {{months|int}}-м при {{cases.market.milestones.m36.customers|int}} активных клиентах. Команда из четырёх человек по {{comparison.5.market|money}} в месяц каждый — {{cases.market.inputs.monthly_fixed_burn|money}} постоянных расходов — окупается примерно с шести клиентов; до этого бизнес расходует {{cases.market.peak_capital_need|money}}, а это {{capital_vs_round.position|text}}.",
+   "Экономика одного клиента более чем здорова: за время работы с компанией клиент приносит {{cases.market.unit_economics.ltv|money}} валовой прибыли, а денег на его привлечение уходит {{cases.market.inputs.blended_cac|money}}. Даже если считать, что четверть зарплат команды — это продажи, привлечение одного клиента обходится в {{cases.market.unit_economics.cac_loaded|money}}, и он приносит в {{cases.market.unit_economics.ltv_cac_loaded|mult}} больше при обычном ориентире «не меньше трёх». Это типично для сервисов, где продаёт сам основатель: деньги здесь не в экономике клиента, а в числе клиентов, которое команда способна вести, и в удержании подписчиков без договора.",
+   "Крайние сценарии расходятся сильно: от выхода в плюс с {{cases.optimistic.breakeven_month|int}}-го месяца при {{cases.optimistic.peak_capital_need|money}} на старте до «плюса нет за {{months|int}} месяцев» при {{cases.pessimistic.peak_capital_need|money}} — почти целиком из-за оттока ({{comparison.2.market_low|pct}}–{{comparison.2.market_high|pct}} в месяц) и притока клиентов ({{comparison.4.market_low|text}}–{{comparison.4.market_high|text}} в месяц), которых на этом бизнесе никто не измерял. Это границы возможного, а не вероятный коридор."
+  ]
+ },
+ "founder_case": {
+  "lead": "На цене CoPostly выход в плюс наступает с {{cases.founder.breakeven_month|int}}-го месяца, а на старте нужно {{cases.founder.peak_capital_need|money}} — на {{bridge_by_domain.pricing.peak_capital_need.delta|money}} больше, чем при рыночной цене, при тех же остальных рыночных цифрах.",
+  "paragraphs": [
+   "Этот расчёт отличается от рыночного одним числом: {{comparison.0.founder|money}} против {{comparison.0.market|money}} за подписку. Выручка на {{months|int}}-м месяце — {{cases.founder.milestones.m36.mrr|money}} в месяц против {{cases.market.milestones.m36.mrr|money}} при рыночной цене и том же числе клиентов: вся разница в цене.",
+   "Низкая цена объясняется одним из трёх: объём постов в тарифе ниже агентских 12–16; цена сознательно занижена ради входа на рынок; стоимость команды ниже рыночного диапазона {{comparison.5.market_low|money}}–{{comparison.5.market_high|money}} на человека в месяц (удалённая команда). Что из этого верно, покажет подсчёт объёма работы и часов на клиента.",
+   "Экономика одного клиента при цене CoPostly тоже здорова — клиент приносит в {{cases.founder.unit_economics.ltv_cac_loaded|mult}} больше, чем стоило его привлечь (с учётом доли зарплат на продажи); цена не ломает экономику клиента, она удлиняет путь к плюсу и почти удваивает нужный стартовый капитал."
+  ]
+ },
+ "competition": {
+  "lead": "CoPostly стоит как хороший фрилансер, а обещает объём небольшого агентства; в Европе в полосе €1 000–2 500 в месяц среди названных агентств она почти одна, но снизу по той же полосе идут программы за $24–99 в месяц, которые прямо предлагают себя вместо «автора за $3 000».",
+  "paragraphs": [
+   "По первому признаку CoPostly стоит рядом с агентствами: разговор с автором и позиционирование есть, чего нет ни у программ, ни у Jennavi и Cleverly. По второму — объём агентский (12 постов, профиль, визуал), но без ведения комментариев и входящих, которые дают Windmill и YellowInk; публикацию вручную обзоры отмечают как единственный минус. По третьему CoPostly — самый мягкий вариант среди агентств: помесячно, без минимального срока, тогда как Underdog и Builderz требуют квартал или разовый проект.",
+   "Итог по трём признакам: продукт агентского типа по цене между Cleverly ($697) и Underdog ($2 000) — ниже всех агентств с разговором с автором и в 2,3 раза дешевле ближайшего по устройству Windmill Growth. В Европе в полосе €1 000–2 500 среди названных агентств CoPostly почти одна: Builderz — от €4 000, французские небольшие агентства — €2 500–5 500. Снизу по той же полосе идут программы: 2pr.io за $24–49 на главной странице сравнивает себя с «автором за $2 000–5 000» и для основателя, которому нужно просто регулярно публиковаться, уже заменяет сервис.",
+   "Подписка без договора на срок — обоюдоострая: она снижает порог входа, но Underdog и EcomGhosts, которые подробнее всех описывают удержание клиентов, настаивают на 90 днях или полугоде, потому что помесячные клиенты уходят раньше, чем видят результат. Это прямо касается оттока — самой неизвестной цифры этого расчёта."
+  ],
+  "where_we_win": "Разговор с автором, стратегия и исходящие рассылки по цене, близкой к фрилансеру, в европейской полосе €1 000–2 500, где полноформатных агентств нет; продавать нужно это, а не объём текстов — по объёму CoPostly уступает и программе за $49, и Cleverly за $697.",
+  "dimensions": [
+   {
+    "key": "interview",
+    "label": "Интервью и стратегия",
+    "why": "Кто и как добывает мысли основателя: еженедельный разговор с автором, черновики от ИИ по профилю или основатель пишет сам — от этого зависит цена и то, звучит ли текст как его собственный."
+   },
+   {
+    "key": "scope",
+    "label": "Объём и охват",
+    "why": "Сколько постов в месяц и что сверх текстов — профиль, комментарии и общение с подписчиками, исходящие рассылки, ответы на входящие; полный набор отличает агентство от одиночного автора."
+   },
+   {
+    "key": "terms",
+    "label": "Условия и кто делает",
+    "why": "Помесячно или с минимальным сроком, люди или ИИ; минимальный срок защищает от ухода клиентов до первых результатов, помесячный формат снижает порог входа."
+   }
+  ],
+  "rows": [
+   {
+    "name": "CoPostly",
+    "layer": "direct",
+    "price": "€1 500; €2 500–3 000 с рассылками",
+    "self": true,
+    "cells": {
+     "interview": "интервью и позиционирование, 2 эксперта + ИИ-помощники (по обзору)",
+     "scope": "12 постов, профиль, визуал, отчёты раз в две недели; публикация вручную (копированием); рассылки в старшем тарифе",
+     "terms": "помесячно, без контракта; люди + ИИ"
+    },
+    "source": "magicpost.in, connectsafely.ai (сайт не читается)"
+   },
+   {
+    "name": "Windmill Growth",
+    "layer": "direct",
+    "price": "$3 999 (Founder OS)",
+    "cells": {
+     "interview": "еженедельное 45-минутное интервью, стратегия бренда",
+     "scope": "до 5 постов в неделю, профиль, рассылки целевым клиентам, ведение входящих, менеджер",
+     "terms": "помесячно после разгона; люди; ~3 новых клиента в месяц"
+    },
+    "source": "windmillgrowth.com"
+   },
+   {
+    "name": "Underdog Ghostwriting",
+    "layer": "direct",
+    "price": "$2 000–6 500",
+    "cells": {
+     "interview": "голосовой гид, еженедельная 30-минутная сессия",
+     "scope": "еженедельный ритм постов, отчёт-карточка, дизайн и лонгриды от $3 500",
+     "terms": "поквартально, минимум 90 дней; люди"
+    },
+    "source": "underdog-ghostwriting.com/pricing"
+   },
+   {
+    "name": "Cleverly",
+    "layer": "direct",
+    "price": "$697 (контент); рассылки отдельно",
+    "cells": {
+     "interview": "короткие контент-интервью",
+     "scope": "12 постов, профиль, рост сети, календарь",
+     "terms": "помесячно; люди"
+    },
+    "source": "cleverly.co"
+   },
+   {
+    "name": "YellowInk",
+    "layer": "direct",
+    "price": "от $1 299",
+    "cells": {
+     "interview": "сессия голоса и истории",
+     "scope": "4–12 постов, профиль, комментарии и ответы, аналитика",
+     "terms": "по частоте постов; люди"
+    },
+    "source": "yellowinkdigital.com"
+   },
+   {
+    "name": "Builderz (DACH)",
+    "layer": "direct",
+    "price": "от €4 000 + спринт €4 500",
+    "cells": {
+     "interview": "еженедельное или двухнедельное интервью, документ голоса",
+     "scope": "позиционирование, профиль, тексты, дистрибуция, измерение",
+     "terms": "разовый спринт, затем ретейнер; люди"
+    },
+    "source": "builderz.org"
+   },
+   {
+    "name": "Jennavi",
+    "layer": "direct",
+    "price": "$200–1 000",
+    "cells": {
+     "interview": "нет — автор пишет по брифу",
+     "scope": "8–25 постов, аудит профиля за $100",
+     "terms": "помесячно; один автор, 2–3 клиента на верхних тарифах"
+    },
+    "source": "buntingpost.com, июль 2026"
+   },
+   {
+    "name": "2pr.io",
+    "layer": "indirect",
+    "price": "$24 (год) / $49",
+    "cells": {
+     "interview": "нет — ИИ пишет в голосе профиля, основатель правит",
+     "scope": "идеи, черновики, карусели, планировщик, комментарии, аналитика",
+     "terms": "отмена в любой момент; ИИ + основатель; 7 000+ пользователей"
+    },
+    "source": "2pr.io/pricing"
+   },
+   {
+    "name": "Taplio / Supergrow / Kleo",
+    "layer": "indirect",
+    "price": "$19–199",
+    "cells": {
+     "interview": "нет",
+     "scope": "черновики, планировщик, аналитика, база вирусных постов",
+     "terms": "помесячно; ИИ + основатель"
+    },
+    "source": "taplio.com, exeedin.com"
+   },
+   {
+    "name": "Фриланс-гострайтер",
+    "layer": "indirect",
+    "price": "$500–2 000 (EU €1 500–3 000)",
+    "cells": {
+     "interview": "звонок раз в неделю или бриф",
+     "scope": "2–3 поста в неделю, обычно без профиля и вовлечения",
+     "terms": "договорные; один человек"
+    },
+    "source": "windmillgrowth.com, brandyze.fr"
+   },
+   {
+    "name": "ChatGPT / Claude + LinkedIn",
+    "layer": "displacer",
+    "price": "$0–20",
+    "cells": {
+     "interview": "нет",
+     "scope": "текст по запросу; встроенные подсказки LinkedIn",
+     "terms": "—; основатель делает всё сам"
+    },
+    "source": "общедоступно"
+   }
+  ]
+ },
+ "next_90_days": [
+  {
+   "domain": "new_customers_per_month",
+   "title": "Сколько договоров даёт месяц звонков",
+   "what": "От притока клиентов итог зависит сильнее всего после стоимости команды, а цифры компании по нему нет; он решает, за сколько месяцев бизнес выходит в плюс.",
+   "how": "Основатель, дни 1–90: вести счётчик — получасовые звонки → подписанные договоры, с источником каждого звонка (посты, рассылка, рекомендация). Итог — таблица в модели к дню 90.",
+   "threshold": "6 и больше договоров за 90 дней из 20 и больше звонков — приток на уровне рынка, расчёт по рыночной середине; 3–5 — планировать по нижнему краю (1 договор в месяц); меньше 3 — проблема в предложении, не в мощности команды."
+  },
+  {
+   "domain": "monthly_churn",
+   "title": "Как быстро уходят клиенты",
+   "what": "Главная неизвестная для подписки без договора: края рыночного диапазона разводят сценарии от выхода в плюс с 4-го месяца до «плюса нет за 36 месяцев».",
+   "how": "Операционный руководитель, дни 1–30: выгрузить из учёта клиентов за последние 12 месяцев — месяц подключения и месяц ухода, посчитать долю ушедших за месяц по группам подключения.",
+   "threshold": "3 % в месяц и меньше за 12 месяцев — удержание на уровне рынка; 3–4,2 % — планировать по середине; больше 4,2 % — выше рыночного края, ввести стартовый пакет на 90 дней."
+  },
+  {
+   "domain": "pricing",
+   "title": "Объём работы на клиента против цены",
+   "what": "Единственное, в чём CoPostly отличается от рынка: разница стоит {{bridge_by_domain.pricing.peak_capital_need.delta|money}} стартового капитала.",
+   "how": "Основатель, дни 1–90: учёт постов и часов работы на каждого клиента за 3 месяца по всем активным клиентам; сравнить с агентским пакетом 12–16 постов.",
+   "threshold": "12 и больше постов и 20 и больше часов на клиента в месяц за 3 месяца — цена ниже рыночной, для новых клиентов поднять до €1 850; меньше — цена соответствует формату, оставить."
+  },
+  {
+   "domain": "other",
+   "title": "Текущее положение компании в модели",
+   "what": "Без числа клиентов и выручки на сегодня расчёт идёт с нуля и не показывает, хватает ли денег самой компании.",
+   "how": "Основатель, дни 1–30: выгрузить из биллинга число активных клиентов, выручку за месяц и средний чек; перезапустить расчёт с этими числами и с деньгами на счёте.",
+   "threshold": "К дню 30 в модели три числа: активные клиенты, выручка в месяц, средний чек, — и отчёт переключается в режим «измерено против рынка»."
+  }
+ ],
+ "risks": [
+  {
+   "title": "Клиенты без договора уходят раньше результата",
+   "likelihood": "High",
+   "reversibility": "Reversible",
+   "what": "Без минимального срока часть клиентов отменяет подписку на втором-третьем месяце, до того как публикации начали приносить отклик.",
+   "impact": "Отток выше {{comparison.2.market_high|pct}} в месяц уводит расчёт к худшему краю: {{cases.pessimistic.peak_capital_need|money}} на старте и без выхода в плюс за {{months|int}} месяцев.",
+   "signal": "Больше 30 % клиентов, подключённых за последние 6 месяцев, ушли до 4-го месяца.",
+   "action": "Ввести стартовый пакет на 90 дней с фиксированной ценой, как у Underdog; первый отчёт о результате показывать на 6-й неделе."
+  },
+  {
+   "title": "Программы забирают клиентов, которым нужно просто публиковаться",
+   "likelihood": "High",
+   "reversibility": "Structural",
+   "what": "2pr.io, Taplio, Supergrow за $24–199 в месяц закрывают потребность в регулярных постах у основателей, которым не нужны разговор с автором и рассылки.",
+   "impact": "Приток сужается: при 1 договоре в месяц вместо {{comparison.4.market|text}} расчёт сдвигается к худшему краю, где плюса нет за {{months|int}} месяцев.",
+   "signal": "Больше 2 из 10 ушедших клиентов за квартал называют программу причиной ухода; больше половины звонков — с запросом «только посты».",
+   "action": "Строить предложение и цену вокруг разговора с автором, стратегии и рассылок; дешёвый тариф «только посты» не держать — его выигрывают программы."
+  },
+  {
+   "title": "Цена ниже рынка при агентском объёме работы",
+   "likelihood": "Medium",
+   "reversibility": "Reversible",
+   "what": "Если на клиента уходит агентский объём (12 постов, 20 и больше часов), €1 500 не покрывают рост команды и не оставляют запаса на удержание.",
+   "impact": "На цене CoPostly на старте нужно {{cases.founder.peak_capital_need|money}} против {{cases.market.peak_capital_need|money}} при рыночной цене; на {{months|int}}-м месяце выручка {{bridge_by_domain.pricing.revenue_end.if_founder_right|money}} вместо {{bridge_by_domain.pricing.revenue_end.market|money}} в месяц.",
+   "signal": "В среднем больше 20 часов на клиента в месяц 3 месяца подряд при валовой марже ниже 40 %.",
+   "action": "Новая цена для новых клиентов на уровне нижней границы агентского диапазона (€1 850); текущим клиентам — прежняя цена до конца года."
+  },
+  {
+   "title": "Команда не успевает за ростом",
+   "likelihood": "Medium",
+   "reversibility": "Reversible",
+   "what": "Разговоры с клиентами и ручная работа не растут без найма: четыре человека ведут ограниченное число клиентов, новые ждут или получают меньше внимания.",
+   "impact": "Расчёт заложил {{comparison.4.market|text}} новых клиента в месяц; при {{cases.market.milestones.m36.customers|int}} активных клиентах к {{months|int}}-му месяцу это больше 10 клиентов на человека — выше обычной нагрузки автора.",
+   "signal": "Очередь на подключение дольше 3 недель или срыв сроков больше чем у 10 % клиентов за месяц.",
+   "action": "Заложить в расходы найм одного автора на каждые 8–10 клиентов; проверить, что валовая маржа {{comparison.1.market|pct}} держится после найма."
+  }
+ ],
+ "appendix": {
+  "evidence": [
+   [
+    "#",
+    "Факт",
+    "Значение",
+    "Источник",
+    "Качество"
+   ],
+   [
+    "1",
+    "Цена CoPostly, ведение / с рассылками",
+    "€1 500 / €2 500 в месяц",
+    "magicpost.in/blog/copostly-review",
+    "вторичный"
+   ],
+   [
+    "2",
+    "Обзор CoPostly: объём постов не опубликован",
+    "минус в обзорах",
+    "magicpost.in; connectsafely.ai",
+    "вторичный"
+   ],
+   [
+    "3",
+    "Агентский ретейнер, 12–16 постов",
+    "$2 000–4 000 в месяц",
+    "Windmill Growth via magicpost.in/blog/linkedin-ghostwriting-rates",
+    "вторичный"
+   ],
+   [
+    "4",
+    "Агентский пакет с лид-геном",
+    "до $7 000 в месяц",
+    "magicpost.in/blog/linkedin-ghostwriting-rates",
+    "вторичный"
+   ],
+   [
+    "5",
+    "Фриланс-гострайтеры",
+    "$900–2 000 в месяц",
+    "magicpost.in/blog/linkedin-ghostwriting-rates",
+    "вторичный"
+   ],
+   [
+    "6",
+    "Инструменты: Taplio / Kleo / Supergrow / AuthoredUp",
+    "$65 / $99 / $12–19 / $20 в месяц",
+    "postiv.ai/blog/taplio-alternatives",
+    "вторичный"
+   ],
+   [
+    "7",
+    "Отток ретейнер-агентств",
+    "> 20 % в год — красный флаг; 20–40 % в год",
+    "churn.agency.project.2025 (library)",
+    "вторичный"
+   ],
+   [
+    "8",
+    "Курс EUR/USD",
+    "0,92",
+    "расчётный курс, сентябрь 2026",
+    "ориентир"
+   ],
+   [
+    "9",
+    "Bootstrap: типичный капитал",
+    "до €50k",
+    "bootstrap.capital (library, definition)",
+    "ориентир"
+   ],
+   [
+    "10",
+    "Сайт copostly.com",
+    "не загрузился (fetch и браузер)",
+    "исследование по обзорам, tier secondary",
+    "примечание"
+   ],
+   [
+    "11",
+    "Windmill Growth — Founder OS",
+    "$3 999 в месяц, до 5 постов в неделю",
+    "windmillgrowth.com",
+    "первичный"
+   ],
+   [
+    "12",
+    "Underdog Ghostwriting",
+    "$2 000 / 3 500 / 6 500, поквартально, минимум 90 дней",
+    "underdog-ghostwriting.com/pricing",
+    "первичный"
+   ],
+   [
+    "13",
+    "Cleverly — контент-план",
+    "$697 за 12 постов",
+    "cleverly.co/linkedin-content-ghostwriting",
+    "первичный"
+   ],
+   [
+    "14",
+    "YellowInk",
+    "от $1 299, 4–12 постов",
+    "yellowinkdigital.com",
+    "первичный"
+   ],
+   [
+    "15",
+    "Builderz (DACH)",
+    "от €4 000 в месяц + спринт от €4 500",
+    "builderz.org",
+    "первичный"
+   ],
+   [
+    "16",
+    "Франция: 12–14 постов",
+    "€2 500–5 500, медиана €4 000",
+    "brandyze.fr, май 2026",
+    "ориентир"
+   ],
+   [
+    "17",
+    "2pr.io",
+    "$24 в месяц (годовая) / $49; агентствам $17 за профиль",
+    "2pr.io/pricing",
+    "первичный"
+   ],
+   [
+    "18",
+    "Windmill: доля основателей с гострайтером",
+    "15–20 % фондируемых; 200+ агентств",
+    "windmillgrowth.com/blogseo/state-of-linkedin-ghostwriting-2026",
+    "ориентир"
+   ],
+   [
+    "19",
+    "CoPostly: тарифы по обзору",
+    "€1 500 (authority) / €3 000 (lead gen), 12 постов, 2 эксперта + 3 ИИ-агента",
+    "magicpost.in (сниппет), не подтверждено сайтом",
+    "вторичный"
+   ]
+  ]
+ },
+ "manual_numbers": [
+  {
+   "value": "2 500",
+   "field": "CoPostly outbound tier price",
+   "source": "magicpost.in copostly-review",
+   "where": [
+    "assumptions.stories[0].belief"
+   ],
+   "context": "outbound-кампаниями — €2 500 (MagicPost"
+  },
+  {
+   "value": "2 500",
+   "field": "CoPostly outbound tier price",
+   "source": "magicpost.in copostly-review",
+   "where": [
+    "appendix.evidence[1][2]"
+   ],
+   "context": "€1 500 / €2 500 в месяц"
+  },
+  {
+   "value": "1 500",
+   "field": "CoPostly management tier price",
+   "source": "magicpost.in copostly-review",
+   "where": [
+    "appendix.evidence[1][2]"
+   ],
+   "context": "€1 500 / €2 500 в месяц"
+  },
+  {
+   "value": "0,92",
+   "field": "EUR per USD",
+   "source": "stated rate",
+   "where": [
+    "assumptions.stories[0].evidence",
+    "appendix.evidence[8][2]"
+   ],
+   "context": "0,92"
+  },
+  {
+   "value": "900",
+   "field": "freelance ghostwriter low",
+   "source": "magicpost.in ghostwriting-rates",
+   "where": [
+    "assumptions.stories[0].evidence",
+    "competition.paragraphs[0]",
+    "appendix.evidence[5][2]"
+   ],
+   "context": "$900"
+  },
+  {
+   "value": "2 000",
+   "field": "freelance ghostwriter high / agency low",
+   "source": "magicpost.in ghostwriting-rates",
+   "where": [
+    "assumptions.stories[0].evidence",
+    "competition.paragraphs[0]",
+    "appendix.evidence[3][2]",
+    "appendix.evidence[5][2]"
+   ],
+   "context": "2 000"
+  },
+  {
+   "value": "4 000",
+   "field": "agency retainer high",
+   "source": "magicpost.in ghostwriting-rates",
+   "where": [
+    "competition.paragraphs[0]",
+    "appendix.evidence[3][2]"
+   ],
+   "context": "4 000"
+  },
+  {
+   "value": "7 000",
+   "field": "agency lead-gen package high",
+   "source": "magicpost.in ghostwriting-rates",
+   "where": [
+    "competition.paragraphs[0]",
+    "appendix.evidence[4][2]"
+   ],
+   "context": "7 000"
+  },
+  {
+   "value": "65",
+   "field": "Taplio price",
+   "source": "postiv.ai taplio-alternatives",
+   "where": [
+    "competition.paragraphs[1]",
+    "appendix.evidence[6][2]"
+   ],
+   "context": "$65"
+  },
+  {
+   "value": "99",
+   "field": "Kleo price",
+   "source": "postiv.ai taplio-alternatives",
+   "where": [
+    "competition.paragraphs[1]",
+    "appendix.evidence[6][2]",
+    "risks[3].text"
+   ],
+   "context": "99"
+  },
+  {
+   "value": "19",
+   "field": "Supergrow price high",
+   "source": "postiv.ai taplio-alternatives",
+   "where": [
+    "competition.paragraphs[1]",
+    "appendix.evidence[6][2]"
+   ],
+   "context": "19"
+  },
+  {
+   "value": "10",
+   "field": "evidence row index",
+   "source": "appendix",
+   "where": [
+    "appendix.evidence[10][0]"
+   ],
+   "context": "10"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "ъём бутик-агентства; в Европе в полосе €1 000–2 500 в месяц среди названных агентств"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "тик-агентства; в Европе в полосе €1 000–2 500 в месяц среди названных агентств оно по"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "изу по этой полосе бьют инструменты за $24–99, которые прямо продают себя как заме"
+  },
+  {
+   "value": "99",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "по этой полосе бьют инструменты за $24–99, которые прямо продают себя как замену"
+  },
+  {
+   "value": "3 999",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[0]"
+   ],
+   "context": "посты, профиль, outreach и входящие за $3 999 в месяц, то есть в 2,3 раза дороже CoPo"
+  },
+  {
+   "value": "2,3",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[0]"
+   ],
+   "context": "и входящие за $3 999 в месяц, то есть в 2,3 раза дороже CoPostly. Ближе всех по цен"
+  },
+  {
+   "value": "697",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[0]"
+   ],
+   "context": "Postly. Ближе всех по цене — Cleverly ($697 за 12 постов с более лёгким интервью) и"
+  },
+  {
+   "value": "1 299",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[0]"
+   ],
+   "context": "YellowInk (Великобритания) стартует от $1 299 за 4–12 постов с ведением комментариев;"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[0]"
+   ],
+   "context": "мментариев; Jennavi продаёт от $200 до $1 000 за 8–25 постов силами одного автора."
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "и дороже: Builderz (Германия) берёт от €4 000 в месяц плюс разовый стратегический спр"
+  },
+  {
+   "value": "4 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "плюс разовый стратегический спринт от €4 500; французские бутики за 12–14 постов про"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "нцузские бутики за 12–14 постов просят €2 500–5 500 при медиане €4 000; нидерландские"
+  },
+  {
+   "value": "5 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ие бутики за 12–14 постов просят €2 500–5 500 при медиане €4 000; нидерландские подпи"
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "постов просят €2 500–5 500 при медиане €4 000; нидерландские подписки — €500–2 000. П"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "е €4 000; нидерландские подписки — €500–2 000. Полоса €1 000–2 500 в DACH и Франции с"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ландские подписки — €500–2 000. Полоса €1 000–2 500 в DACH и Франции среди названных"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ие подписки — €500–2 000. Полоса €1 000–2 500 в DACH и Франции среди названных агентс"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "ватель пишет сам с помощью ИИ: 2pr.io ($24 в месяц при годовой оплате, $49 помесяч"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "pr.io ($24 в месяц при годовой оплате, $49 помесячно; заявлено 7 000+ пользователе"
+  },
+  {
+   "value": "7 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "годовой оплате, $49 помесячно; заявлено 7 000+ пользователей), Taplio ($39–199), Supe"
+  },
+  {
+   "value": "199",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "лено 7 000+ пользователей), Taplio ($39–199), Supergrow ($19–139), AuthoredUp (окол"
+  },
+  {
+   "value": "19",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "вателей), Taplio ($39–199), Supergrow ($19–139), AuthoredUp (около $20), Kleo ($99"
+  },
+  {
+   "value": "139",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "елей), Taplio ($39–199), Supergrow ($19–139), AuthoredUp (около $20), Kleo ($99), M"
+  },
+  {
+   "value": "99",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "19–139), AuthoredUp (около $20), Kleo ($99), MagicPost ($35–69), Scripe (около €24"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "99), MagicPost ($35–69), Scripe (около €24), BuntingPost (разово $49–199). 2pr.io"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "cripe (около €24), BuntingPost (разово $49–199). 2pr.io на главной странице прямо"
+  },
+  {
+   "value": "199",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "pe (около €24), BuntingPost (разово $49–199). 2pr.io на главной странице прямо срав"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "ямо сравнивает себя с «гострайтером за $2 000–5 000 в месяц». Для основателя, котором"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.paragraphs[3]"
+   ],
+   "context": "outbound основатели продолжают платить $2 000–5 000."
+  },
+  {
+   "value": "3 999",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[0]"
+   ],
+   "context": "Windmill Growth (US, $3 999)"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[1]"
+   ],
+   "context": "Underdog Ghostwriting (UK, $2 000–6 500)"
+  },
+  {
+   "value": "697",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[2]"
+   ],
+   "context": "Cleverly (US, $697)"
+  },
+  {
+   "value": "1 299",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[3]"
+   ],
+   "context": "YellowInk (UK, от $1 299)"
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[4]"
+   ],
+   "context": "Builderz (DE, от €4 000)"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[5]"
+   ],
+   "context": "французские бутики (€2 500–5 500)"
+  },
+  {
+   "value": "5 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[5]"
+   ],
+   "context": "французские бутики (€2 500–5 500)"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.direct[6]"
+   ],
+   "context": "Jennavi (US, $200–1 000)"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.indirect[8]"
+   ],
+   "context": "фриланс-гострайтеры ($500–2 000)"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "кую к фрилансеру, в европейской полосе €1 000–2 500, где полноформатных агентств нет;"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "фрилансеру, в европейской полосе €1 000–2 500, где полноформатных агентств нет; прода"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "бъёму CoPostly обходят и инструмент за $49, и Cleverly за $697."
+  },
+  {
+   "value": "697",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "дят и инструмент за $49, и Cleverly за $697."
+  },
+  {
+   "value": "24",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "risks[3].text"
+   ],
+   "context": "2pr.io за $24–49 в месяц прямо продаёт себя как замен"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "risks[3].text"
+   ],
+   "context": "2pr.io за $24–49 в месяц прямо продаёт себя как замену г"
+  },
+  {
+   "value": "7 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "risks[3].text"
+   ],
+   "context": "себя как замену гострайтеру и заявляет 7 000+ пользователей; Taplio, Supergrow, Bunt"
+  },
+  {
+   "value": "99",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "risks[4].text"
+   ],
+   "context": "За $12–99 в месяц основатель ведёт профиль сам; с"
+  },
+  {
+   "value": "3 999",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[11][2]"
+   ],
+   "context": "$3 999 в месяц, до 5 постов в неделю"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[12][2]"
+   ],
+   "context": "$2 000 / 3 500 / 6 500, поквартально, минимум"
+  },
+  {
+   "value": "697",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[13][2]"
+   ],
+   "context": "$697 за 12 постов"
+  },
+  {
+   "value": "1 299",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[14][2]"
+   ],
+   "context": "от $1 299, 4–12 постов"
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[15][2]"
+   ],
+   "context": "от €4 000 в месяц + спринт от €4 500"
+  },
+  {
+   "value": "4 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[15][2]"
+   ],
+   "context": "от €4 000 в месяц + спринт от €4 500"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[16][2]"
+   ],
+   "context": "€2 500–5 500, медиана €4 000"
+  },
+  {
+   "value": "5 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[16][2]"
+   ],
+   "context": "€2 500–5 500, медиана €4 000"
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[16][2]"
+   ],
+   "context": "€2 500–5 500, медиана €4 000"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[17][2]"
+   ],
+   "context": "$24 в месяц (годовая) / $49; агентствам $17"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[17][2]"
+   ],
+   "context": "$24 в месяц (годовая) / $49; агентствам $17 за профиль"
+  },
+  {
+   "value": "19",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[19][0]"
+   ],
+   "context": "19"
+  },
+  {
+   "value": "1 500",
+   "field": "competitor price / count (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix",
+   "where": [
+    "appendix.evidence[19][2]"
+   ],
+   "context": "€1 500 (authority) / €3 000 (lead gen), 12 пос"
+  },
+  {
+   "value": "697",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "гентского типа по цене между Cleverly ($697) и Underdog ($2 000) — ниже всех агентс"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "цене между Cleverly ($697) и Underdog ($2 000) — ниже всех агентств с интервью и в 2,"
+  },
+  {
+   "value": "2,3",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "00) — ниже всех агентств с интервью и в 2,3 раза дешевле ближайшего по устройству W"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "тву Windmill Growth. В Европе в полосе €1 000–2 500 среди названных агентств CoPostly"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ndmill Growth. В Европе в полосе €1 000–2 500 среди названных агентств CoPostly почти"
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "нтств CoPostly почти одно: Builderz от €4 000, французские бутики €2 500–5 500. Снизу"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "Builderz от €4 000, французские бутики €2 500–5 500. Снизу по той же полосе идут инст"
+  },
+  {
+   "value": "5 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "rz от €4 000, французские бутики €2 500–5 500. Снизу по той же полосе идут инструмент"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "же полосе идут инструменты: 2pr.io за $24–49 на главной странице сравнивает себя"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "полосе идут инструменты: 2pr.io за $24–49 на главной странице сравнивает себя с «"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ице сравнивает себя с «гострайтером за $2 000–5 000» и для основателя, которому нужно"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "кой к фрилансеру, в европейской полосе €1 000–2 500, где полноформатных агентств нет;"
+  },
+  {
+   "value": "1 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[0].price"
+   ],
+   "context": "€1 500; €2 500–3 000 с outbound"
+  },
+  {
+   "value": "2 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[0].price"
+   ],
+   "context": "€1 500; €2 500–3 000 с outbound"
+  },
+  {
+   "value": "3 999",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[1].price"
+   ],
+   "context": "$3 999 (Founder OS)"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[2].price"
+   ],
+   "context": "$2 000–6 500"
+  },
+  {
+   "value": "697",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[3].price"
+   ],
+   "context": "$697 (контент); outreach отдельно"
+  },
+  {
+   "value": "1 299",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[4].price"
+   ],
+   "context": "от $1 299"
+  },
+  {
+   "value": "4 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[5].price"
+   ],
+   "context": "от €4 000 + спринт €4 500"
+  },
+  {
+   "value": "4 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[5].price"
+   ],
+   "context": "от €4 000 + спринт €4 500"
+  },
+  {
+   "value": "1 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[6].price"
+   ],
+   "context": "$200–1 000"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[7].price"
+   ],
+   "context": "$24 (год) / $49"
+  },
+  {
+   "value": "49",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[7].price"
+   ],
+   "context": "$24 (год) / $49"
+  },
+  {
+   "value": "7 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[7].cells.terms"
+   ],
+   "context": "отмена в любой момент; ИИ + основатель; 7 000+ пользователей"
+  },
+  {
+   "value": "19",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[8].price"
+   ],
+   "context": "$19–199"
+  },
+  {
+   "value": "199",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[8].price"
+   ],
+   "context": "$19–199"
+  },
+  {
+   "value": "2 000",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[9].price"
+   ],
+   "context": "$500–2 000 (EU €1 500–3 000)"
+  },
+  {
+   "value": "1 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "competition.rows[9].price"
+   ],
+   "context": "$500–2 000 (EU €1 500–3 000)"
+  },
+  {
+   "value": "24",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[1].what"
+   ],
+   "context": "2pr.io, Taplio, Supergrow за $24–199 в месяц закрывают потребность в рег"
+  },
+  {
+   "value": "199",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[1].what"
+   ],
+   "context": "2pr.io, Taplio, Supergrow за $24–199 в месяц закрывают потребность в регуляр"
+  },
+  {
+   "value": "10",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[1].signal"
+   ],
+   "context": "Более 2 из 10 ушедших клиентов за квартал называют ин"
+  },
+  {
+   "value": "1 500",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[2].what"
+   ],
+   "context": "гентский объём (12 постов, 20+ часов), €1 500 не покрывают рост команды и не оставляю"
+  },
+  {
+   "value": "1 850",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[2].action"
+   ],
+   "context": "е нижней границы агентского диапазона (€1 850); текущим — тариф без изменений до конц"
+  },
+  {
+   "value": "10",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[3].signal"
+   ],
+   "context": "ее 3 недель или срыв сроков у более чем 10 % клиентов за месяц."
+  },
+  {
+   "value": "10",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[3].action"
+   ],
+   "context": "Заложить наём автора на каждые 8–10 ретейнеров в стоимость команды; провери"
+  },
+  {
+   "value": "10",
+   "field": "competitor price / threshold (competitive research 2026-09-27)",
+   "source": "vendor pricing pages and rate guides, see appendix; thresholds: test design",
+   "where": [
+    "risks[3].impact"
+   ],
+   "context": "активных ретейнерах к -му месяцу это 10+ клиентов на человека — выше типичной н"
+  },
+  {
+   "value": "2 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "assumptions.stories[0].belief"
+   ],
+   "context": "риф с исходящими рассылками клиентам — €2 500 (обзор MagicPost, 2026). Сколько постов"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "assumptions.stories[0].evidence"
+   ],
+   "context": "Агентская подписка среднего уровня на 12–16 постов стоит – в месяц (Windmill G"
+  },
+  {
+   "value": "16",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "assumptions.stories[0].evidence"
+   ],
+   "context": "гентская подписка среднего уровня на 12–16 постов стоит – в месяц (Windmill Grow"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "assumptions.stories[0].test"
+   ],
+   "context": "уходит на одного клиента в месяц. Если 12 и больше постов и 20 и больше часов — ц"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "assumptions.stories[0].test"
+   ],
+   "context": "ента в месяц. Если 12 и больше постов и 20 и больше часов — цена ниже рыночной при"
+  },
+  {
+   "value": "40",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "assumptions.stories[0].test"
+   ],
+   "context": "часов — цена ниже рыночной примерно на 40 %, и для новых клиентов её стоит поднят"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "market_case.paragraphs[0]"
+   ],
+   "context": "Выручка растёт с в месяц на 12-м месяце до на -м при активных кли"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "founder_case.paragraphs[1]"
+   ],
+   "context": "х: объём постов в тарифе ниже агентских 12–16; цена сознательно занижена ради вход"
+  },
+  {
+   "value": "16",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "founder_case.paragraphs[1]"
+   ],
+   "context": "объём постов в тарифе ниже агентских 12–16; цена сознательно занижена ради входа н"
+  },
+  {
+   "value": "1 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "ебольшого агентства; в Европе в полосе €1 000–2 500 в месяц среди названных агентств"
+  },
+  {
+   "value": "2 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "ого агентства; в Европе в полосе €1 000–2 500 в месяц среди названных агентств она по"
+  },
+  {
+   "value": "24",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "изу по той же полосе идут программы за $24–99 в месяц, которые прямо предлагают се"
+  },
+  {
+   "value": "99",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "по той же полосе идут программы за $24–99 в месяц, которые прямо предлагают себя"
+  },
+  {
+   "value": "3 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.lead"
+   ],
+   "context": "рямо предлагают себя вместо «автора за $3 000»."
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[0]"
+   ],
+   "context": "Cleverly. По второму — объём агентский (12 постов, профиль, визуал), но без ведени"
+  },
+  {
+   "value": "2 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "цене между Cleverly ($697) и Underdog ($2 000) — ниже всех агентств с разговором с ав"
+  },
+  {
+   "value": "2,3",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "сех агентств с разговором с автором и в 2,3 раза дешевле ближайшего по устройству W"
+  },
+  {
+   "value": "4 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ств CoPostly почти одна: Builderz — от €4 000, французские небольшие агентства — €2 5"
+  },
+  {
+   "value": "2 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "000, французские небольшие агентства — €2 500–5 500. Снизу по той же полосе идут прог"
+  },
+  {
+   "value": "5 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ранцузские небольшие агентства — €2 500–5 500. Снизу по той же полосе идут программы:"
+  },
+  {
+   "value": "24",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "ой же полосе идут программы: 2pr.io за $24–49 на главной странице сравнивает себя"
+  },
+  {
+   "value": "49",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "же полосе идут программы: 2pr.io за $24–49 на главной странице сравнивает себя с «"
+  },
+  {
+   "value": "2 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "странице сравнивает себя с «автором за $2 000–5 000» и для основателя, которому нужно"
+  },
+  {
+   "value": "5 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[1]"
+   ],
+   "context": "це сравнивает себя с «автором за $2 000–5 000» и для основателя, которому нужно прост"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.paragraphs[2]"
+   ],
+   "context": "ывают удержание клиентов, настаивают на 90 днях или полугоде, потому что помесячны"
+  },
+  {
+   "value": "49",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "бъёму CoPostly уступает и программе за $49, и Cleverly за $697."
+  },
+  {
+   "value": "697",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.where_we_win"
+   ],
+   "context": "пает и программе за $49, и Cleverly за $697."
+  },
+  {
+   "value": "1 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[0].price"
+   ],
+   "context": "€1 500; €2 500–3 000 с рассылками"
+  },
+  {
+   "value": "2 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[0].price"
+   ],
+   "context": "€1 500; €2 500–3 000 с рассылками"
+  },
+  {
+   "value": "3 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[0].price"
+   ],
+   "context": "€1 500; €2 500–3 000 с рассылками"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[0].cells.scope"
+   ],
+   "context": "12 постов, профиль, визуал, отчёты раз в д"
+  },
+  {
+   "value": "45",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[1].cells.interview"
+   ],
+   "context": "еженедельное 45-минутное интервью, стратегия бренда"
+  },
+  {
+   "value": "6 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[2].price"
+   ],
+   "context": "$2 000–6 500"
+  },
+  {
+   "value": "30",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[2].cells.interview"
+   ],
+   "context": "голосовой гид, еженедельная 30-минутная сессия"
+  },
+  {
+   "value": "3 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[2].cells.scope"
+   ],
+   "context": ", отчёт-карточка, дизайн и лонгриды от $3 500"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[2].cells.terms"
+   ],
+   "context": "поквартально, минимум 90 дней; люди"
+  },
+  {
+   "value": "697",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[3].price"
+   ],
+   "context": "$697 (контент); рассылки отдельно"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[3].cells.scope"
+   ],
+   "context": "12 постов, профиль, рост сети, календарь"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[4].cells.scope"
+   ],
+   "context": "4–12 постов, профиль, комментарии и ответы,"
+  },
+  {
+   "value": "200",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[6].price"
+   ],
+   "context": "$200–1 000"
+  },
+  {
+   "value": "25",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[6].cells.scope"
+   ],
+   "context": "8–25 постов, аудит профиля за $100"
+  },
+  {
+   "value": "100",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[6].cells.scope"
+   ],
+   "context": "8–25 постов, аудит профиля за $100"
+  },
+  {
+   "value": "500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[9].price"
+   ],
+   "context": "$500–2 000 (EU €1 500–3 000)"
+  },
+  {
+   "value": "3 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[9].price"
+   ],
+   "context": "$500–2 000 (EU €1 500–3 000)"
+  },
+  {
+   "value": "0",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[10].price"
+   ],
+   "context": "$0–20"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "competition.rows[10].price"
+   ],
+   "context": "$0–20"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[0].how"
+   ],
+   "context": "Основатель, дни 1–90: вести счётчик — получасовые звонки → п"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[0].how"
+   ],
+   "context": "ендация). Итог — таблица в модели к дню 90."
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[0].threshold"
+   ],
+   "context": "6 и больше договоров за 90 дней из 20 и больше звонков — приток на"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[0].threshold"
+   ],
+   "context": "6 и больше договоров за 90 дней из 20 и больше звонков — приток на уровне рын"
+  },
+  {
+   "value": "36",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].what"
+   ],
+   "context": "а в плюс с 4-го месяца до «плюса нет за 36 месяцев»."
+  },
+  {
+   "value": "30",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].how"
+   ],
+   "context": "Операционный руководитель, дни 1–30: выгрузить из учёта клиентов за последн"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].how"
+   ],
+   "context": "ыгрузить из учёта клиентов за последние 12 месяцев — месяц подключения и месяц ухо"
+  },
+  {
+   "value": "3",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].threshold"
+   ],
+   "context": "3 % в месяц и меньше за 12 месяцев — удер"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].threshold"
+   ],
+   "context": "3 % в месяц и меньше за 12 месяцев — удержание на уровне рынка; 3–"
+  },
+  {
+   "value": "4,2",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].threshold"
+   ],
+   "context": "месяцев — удержание на уровне рынка; 3–4,2 % — планировать по середине; больше 4,2"
+  },
+  {
+   "value": "4,2",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].threshold"
+   ],
+   "context": "4,2 % — планировать по середине; больше 4,2 % — выше рыночного края, ввести стартов"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[1].threshold"
+   ],
+   "context": "ночного края, ввести стартовый пакет на 90 дней."
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[2].how"
+   ],
+   "context": "Основатель, дни 1–90: учёт постов и часов работы на каждого"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[2].how"
+   ],
+   "context": "клиентам; сравнить с агентским пакетом 12–16 постов."
+  },
+  {
+   "value": "16",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[2].how"
+   ],
+   "context": "иентам; сравнить с агентским пакетом 12–16 постов."
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[2].threshold"
+   ],
+   "context": "12 и больше постов и 20 и больше часов на"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[2].threshold"
+   ],
+   "context": "12 и больше постов и 20 и больше часов на клиента в месяц за 3"
+  },
+  {
+   "value": "1 850",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[2].threshold"
+   ],
+   "context": "ыночной, для новых клиентов поднять до €1 850; меньше — цена соответствует формату, о"
+  },
+  {
+   "value": "30",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[3].how"
+   ],
+   "context": "Основатель, дни 1–30: выгрузить из биллинга число активных к"
+  },
+  {
+   "value": "30",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "next_90_days[3].threshold"
+   ],
+   "context": "К дню 30 в модели три числа: активные клиенты, в"
+  },
+  {
+   "value": "30",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[0].signal"
+   ],
+   "context": "Больше 30 % клиентов, подключённых за последние 6"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[0].action"
+   ],
+   "context": "Ввести стартовый пакет на 90 дней с фиксированной ценой, как у Under"
+  },
+  {
+   "value": "10",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[1].signal"
+   ],
+   "context": "Больше 2 из 10 ушедших клиентов за квартал называют пр"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[2].what"
+   ],
+   "context": "Если на клиента уходит агентский объём (12 постов, 20 и больше часов), €1 500 не п"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[2].what"
+   ],
+   "context": "ента уходит агентский объём (12 постов, 20 и больше часов), €1 500 не покрывают ро"
+  },
+  {
+   "value": "1 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[2].what"
+   ],
+   "context": "объём (12 постов, 20 и больше часов), €1 500 не покрывают рост команды и не оставляю"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[2].signal"
+   ],
+   "context": "В среднем больше 20 часов на клиента в месяц 3 месяца подря"
+  },
+  {
+   "value": "40",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[2].signal"
+   ],
+   "context": "3 месяца подряд при валовой марже ниже 40 %."
+  },
+  {
+   "value": "1 850",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[2].action"
+   ],
+   "context": "е нижней границы агентского диапазона (€1 850); текущим клиентам — прежняя цена до ко"
+  },
+  {
+   "value": "10",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[3].impact"
+   ],
+   "context": "ивных клиентах к -му месяцу это больше 10 клиентов на человека — выше обычной наг"
+  },
+  {
+   "value": "10",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[3].signal"
+   ],
+   "context": "е 3 недель или срыв сроков больше чем у 10 % клиентов за месяц."
+  },
+  {
+   "value": "10",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "risks[3].action"
+   ],
+   "context": "расходы найм одного автора на каждые 8–10 клиентов; проверить, что валовая маржа"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[3][1]"
+   ],
+   "context": "Агентский ретейнер, 12–16 постов"
+  },
+  {
+   "value": "16",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[3][1]"
+   ],
+   "context": "Агентский ретейнер, 12–16 постов"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[6][2]"
+   ],
+   "context": "$65 / $99 / $12–19 / $20 в месяц"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[6][2]"
+   ],
+   "context": "$65 / $99 / $12–19 / $20 в месяц"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[7][2]"
+   ],
+   "context": "> 20 % в год — красный флаг; 20–40 % в год"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[7][2]"
+   ],
+   "context": "> 20 % в год — красный флаг; 20–40 % в год"
+  },
+  {
+   "value": "40",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[7][2]"
+   ],
+   "context": "> 20 % в год — красный флаг; 20–40 % в год"
+  },
+  {
+   "value": "50k",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[9][2]"
+   ],
+   "context": "до €50k"
+  },
+  {
+   "value": "11",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[11][0]"
+   ],
+   "context": "11"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[12][0]"
+   ],
+   "context": "12"
+  },
+  {
+   "value": "3 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[12][2]"
+   ],
+   "context": "$2 000 / 3 500 / 6 500, поквартально, минимум 90 дней"
+  },
+  {
+   "value": "6 500",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[12][2]"
+   ],
+   "context": "$2 000 / 3 500 / 6 500, поквартально, минимум 90 дней"
+  },
+  {
+   "value": "90",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[12][2]"
+   ],
+   "context": "/ 3 500 / 6 500, поквартально, минимум 90 дней"
+  },
+  {
+   "value": "13",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[13][0]"
+   ],
+   "context": "13"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[13][2]"
+   ],
+   "context": "$697 за 12 постов"
+  },
+  {
+   "value": "14",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[14][0]"
+   ],
+   "context": "14"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[14][2]"
+   ],
+   "context": "от $1 299, 4–12 постов"
+  },
+  {
+   "value": "15",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[15][0]"
+   ],
+   "context": "15"
+  },
+  {
+   "value": "16",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[16][0]"
+   ],
+   "context": "16"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[16][1]"
+   ],
+   "context": "Франция: 12–14 постов"
+  },
+  {
+   "value": "14",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[16][1]"
+   ],
+   "context": "Франция: 12–14 постов"
+  },
+  {
+   "value": "17",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[17][0]"
+   ],
+   "context": "17"
+  },
+  {
+   "value": "17",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[17][2]"
+   ],
+   "context": "24 в месяц (годовая) / $49; агентствам $17 за профиль"
+  },
+  {
+   "value": "18",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[18][0]"
+   ],
+   "context": "18"
+  },
+  {
+   "value": "15",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[18][2]"
+   ],
+   "context": "15–20 % фондируемых; 200+ агентств"
+  },
+  {
+   "value": "20",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[18][2]"
+   ],
+   "context": "15–20 % фондируемых; 200+ агентств"
+  },
+  {
+   "value": "200",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[18][2]"
+   ],
+   "context": "15–20 % фондируемых; 200+ агентств"
+  },
+  {
+   "value": "-2026",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[18][3]"
+   ],
+   "context": "m/blogseo/state-of-linkedin-ghostwriting-2026"
+  },
+  {
+   "value": "3 000",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[19][2]"
+   ],
+   "context": "€1 500 (authority) / €3 000 (lead gen), 12 постов, 2 эксперта + 3 И"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "appendix.evidence[19][2]"
+   ],
+   "context": "€1 500 (authority) / €3 000 (lead gen), 12 постов, 2 эксперта + 3 ИИ-агента"
+  },
+  {
+   "value": "30",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "conditions[0]"
+   ],
+   "context": "какая выручка в месяц — из биллинга, за 30 дней"
+  },
+  {
+   "value": "12",
+   "field": "threshold / competitor figure / plan figure (see appendix and text)",
+   "source": "test design; vendor pages and rate guides (appendix B)",
+   "where": [
+    "conditions[1]"
+   ],
+   "context": "аблица по группам клиентов за последние 12 месяцев"
+  }
+ ],
+ "conditions": [
+  "Сколько у компании сейчас клиентов на подписке и какая выручка в месяц — из биллинга, за 30 дней",
+  "Какая доля клиентов уходит за месяц — таблица по группам клиентов за последние 12 месяцев",
+  "Сколько договоров подписывается в месяц и из скольких звонков — за последние 3 месяца",
+  "Сколько постов и часов работы получает один клиент в месяц — по всем клиентам за 3 месяца"
+ ]
+}

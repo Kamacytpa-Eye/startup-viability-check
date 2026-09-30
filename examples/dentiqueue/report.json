@@ -1,0 +1,945 @@
+{
+  "startup": "DentiQueue",
+  "date": "30.09.2026",
+  "lang": "ru",
+  "currency": "€",
+  "verdict": "Proceed with conditions",
+  "conditions": [
+    "Из первых 20 клиник за 3 месяца ушло не больше 3 — по когортной таблице из платёжной системы к концу 90 дней.",
+    "Не менее 2 новых клиник в месяц три месяца подряд; зарплаты основателей не выше {{cases.founder.inputs.fte_cost|money}} до раунда."
+  ],
+  "verdict_text": "Двигаться с условиями. На числах команды выход в плюс на {{cases.founder.breakeven_month|month}} при {{cases.founder.peak_capital_need|money}}; на числах рынка плюса нет за {{months|int}} месяцев, нужно {{cases.market.peak_capital_need|money}} — {{capital_vs_round.position|text}}.",
+  "story": [
+    "DentiQueue продаёт венским стоматологиям подписку за {{cases.founder.inputs.arpu0|money}} в месяц: сама заполняет отменённые слоты и рассылает напоминания; платят {{cases.founder.inputs.starting_customers|int}} клиник, {{cases.founder.inputs.starting_mrr|money}} в месяц.",
+    "Команда считает, что клиники не уходят, приходят две новые в месяц, а основатели получают по {{cases.founder.inputs.fte_cost|money}} — тогда плюс на {{cases.founder.breakeven_month|month}}, до него сгорает {{cases.founder.peak_capital_need|money}}, больше имеющихся {{capital_vs_cash.cash_on_hand|money}}.",
+    "Рынок показывает отток около {{cases.market.inputs.monthly_churn_pct|pct}} в месяц и стоимость человека около {{cases.market.inputs.fte_cost|money}} — на этих числах плюса нет за {{months|int}} месяцев, нужно {{cases.market.peak_capital_need|money}}.",
+    "Разницу делают стоимость команды (при зарплатах команды нужно {{bridge_by_domain.fte_cost.peak_capital_need.if_founder_right|money}}) и отток (без него выручка к концу горизонта растёт до {{bridge_by_domain.monthly_churn.revenue_end.if_founder_right|money}} в месяц).",
+    "Ближайшие 90 дней — когортная таблица оттока и продажи вне личной сети; планировать на числах рынка: касса кончается в {{cases.market.cash_out_month|month}}."
+  ],
+  "evidence_basis": "Допущений: {{counts.total|int}}; измерено: {{counts.observed|int}}; заявлено командой: {{counts.founder_stated|int}}; догадки: {{counts.founder_guess|int}}; без рыночной оценки: {{counts.unverified|int}}.",
+  "comparison": {
+    "notes": {
+      "pricing": "Dr. Flex, тариф Booking-Flat за практику (лист ожидания и напоминания включены), опубликованные цены · primary · 2026",
+      "gross_margin": "margin.saas · KeyBanc/OpenView · survey · 2024 — устарел, свежее первичного источника не найдено",
+      "monthly_churn": "churn.saas.smb.2026 · secondary; ChartMogul, медиана компаний до $300k ARR",
+      "cac": "Рыночной оценки нет: денежный CAC при продажах основателем в библиотеке не описан",
+      "new_customers_per_month": "Расчёт: 8 демо в месяц (команда) × конверсия демо→оплата 15–30 % (conv.demo.close.smb)",
+      "fte_cost": "Расчёт: нижняя граница — зарплата основателя на pre-seed (Kruze, США); верхняя — fte.cost.region (не верифицирован)"
+    }
+  },
+  "assumptions": {
+    "lead": "Исход решают стоимость команды и отток клиник; цена, маржа и темп продаж почти не двигают результат.",
+    "stories": [
+      {
+        "domain": "fte_cost",
+        "belief": "Команда планирует платить себе по {{cases.founder.inputs.fte_cost|money}} в месяц с первого месяца; это желание основателей, а не рыночная ставка, и других сотрудников нет.",
+        "evidence": "Бенчмарк по региону (fte.cost.region, не верифицирован) даёт {{cases.market.inputs.fte_cost|money}} в среднем на человека; нижняя граница диапазона — средняя зарплата основателя на pre-seed по данным Kruze Consulting, верхняя — стоимость наёмного специалиста в Западной Европе.",
+        "stakes": "Потребность в капитале на рыночных числах составляет {{cases.market.peak_capital_need|money}}; при зарплатах команды она падает до {{bridge_by_domain.fte_cost.peak_capital_need.if_founder_right|money}} — это самая большая строка моста, но она описывает не бизнес, а расходы команды.",
+        "test": "Проверка не рыночная, а бюджетная: подтвердить, что до раунда суммарная зарплата двух основателей не превышает {{cases.founder.inputs.monthly_fixed_burn|money}} в месяц, и зафиксировать это в плане кассы на 12 месяцев."
+      },
+      {
+        "domain": "monthly_churn",
+        "belief": "Команда исходит из нулевого оттока: ни одна из {{cases.founder.inputs.starting_customers|int}} клиник за пять месяцев не ушла, и продукт считается «прилипающим».",
+        "evidence": "Для подписок малого бизнеса категория показывает {{cases.market.inputs.monthly_churn_pct|pct}} в месяц (churn.saas.smb.2026; ChartMogul даёт медиану 6,5 % для компаний до $300k ARR); шесть клиник за пять месяцев не могут показать отток статистически.",
+        "stakes": "На рыночном оттоке выручка к концу горизонта составляет {{bridge_by_domain.monthly_churn.revenue_end.market|money}} в месяц; при нулевом оттоке — {{bridge_by_domain.monthly_churn.revenue_end.if_founder_right|money}}, а потребность в капитале падает с {{cases.market.peak_capital_need|money}} до {{bridge_by_domain.monthly_churn.peak_capital_need.if_founder_right|money}}.",
+        "test": "Когортная таблица из платёжной системы по месяцам; проходной порог — собственный критерий команды: не больше 3 из первых 20 клиник отменили подписку в течение 3 месяцев после старта оплаты."
+      },
+      {
+        "domain": "gross_margin",
+        "belief": "Команда считает валовую маржу {{cases.founder.inputs.gross_margin_pct|pct}}: хостинг и SMS обходятся примерно в €12 на клинику в месяц при цене {{cases.founder.inputs.arpu0|money}}.",
+        "evidence": "Для SaaS категория показывает {{cases.market.inputs.gross_margin_pct|pct}} (margin.saas, KeyBanc/OpenView, 2024 — запись устарела, свежее первичного источника в этом прогоне не найдено); риск в том, что расход на SMS растёт с числом напоминаний, а не с числом клиник.",
+        "stakes": "Разница стоит немного: при марже команды потребность в капитале на рыночных числах меняется с {{cases.market.peak_capital_need|money}} на {{bridge_by_domain.gross_margin.peak_capital_need.if_founder_right|money}}.",
+        "test": "Счёт от SMS-провайдера и хостинга за три месяца, делённый на число платящих клиник; порог — себестоимость не выше €15 на клинику в месяц."
+      },
+      {
+        "domain": "pricing",
+        "belief": "Команда держит цену {{cases.founder.inputs.arpu0|money}} за клинику в месяц без договора и считает, что клиника платит за заполненные слоты, а не за софт.",
+        "evidence": "Dr. Flex продаёт лист ожидания с напоминаниями в тарифе Booking-Flat по €99–169 за практику в месяц (опубликованные цены, 2026); Doctolib берёт от €139 за каждого врача — цена команды внутри диапазона.",
+        "stakes": "Цена почти не двигает результат: при цене команды потребность в капитале на рыночных числах меняется с {{cases.market.peak_capital_need|money}} на {{bridge_by_domain.pricing.peak_capital_need.if_founder_right|money}}.",
+        "test": "Доля клиник, оплативших второй месяц без запроса скидки; порог — не меньше 90 % из следующих 10 клиник."
+      },
+      {
+        "domain": "new_customers_per_month",
+        "belief": "Команда рассчитывает на 8 демо в месяц и подписание каждой четвёртой клиники — две новые клиники в месяц, все из личной сети и одной ассоциации.",
+        "evidence": "Конверсия демо→оплата для малого бизнеса при продажах основателем составляет 15–30 % (conv.demo.close.smb) — число команды внутри диапазона; сам поток демо бенчмарком не подтверждён и заметно ниже ёмкости одного основателя в продажах.",
+        "stakes": "На рыночной конверсии потребность в капитале составляет {{cases.market.peak_capital_need|money}}; при темпе команды — {{bridge_by_domain.new_customers_per_month.peak_capital_need.if_founder_right|money}}; цель в 60 клиник за 12 месяцев требует вдвое большего потока демо, чем есть.",
+        "test": "Холодный контакт с клиниками вне личной сети: 40 клиник за 30 дней; порог — не меньше 4 демо и хотя бы 1 подписка."
+      }
+    ]
+  },
+  "market_case": {
+    "lead": "На числах рынка бизнес растёт медленно и не выходит в плюс за {{months|int}} месяцев.",
+    "paragraphs": [
+      "Выручка растёт с {{cases.founder.inputs.starting_mrr|money}} до {{cases.market.milestones.end.mrr|money}} в месяц к {{months|int}}-му месяцу: каждый месяц приходят почти две клиники, но около {{cases.market.inputs.monthly_churn_pct|pct}} базы уходит, и число клиник упирается в {{cases.market.milestones.end.customers|int}}. Бизнес не выходит в плюс внутри горизонта; потребность в капитале достигает {{cases.market.peak_capital_need|money}}, почти целиком это зарплаты.",
+      "Экономика клиента здоровая по деньгам: клиника приносит {{cases.market.unit_economics.ltv|money}} валовой прибыли за срок жизни против {{cases.market.inputs.blended_cac|money}} денежных затрат на привлечение. С учётом половины фонда оплаты труда на продажи нагруженное соотношение падает до {{cases.market.unit_economics.ltv_cac_headline|mult}} — продажи основателем при двух клиниках в месяц дороже, чем стоит клиент.",
+      "Границы бенчмарков задают разброс от {{cases.pessimistic.peak_capital_need|money}} (пессимистичный край) до {{cases.optimistic.peak_capital_need|money}} (оптимистичный край, выход в плюс на {{cases.optimistic.breakeven_month|month}}). Разброс определяет прежде всего диапазон стоимости команды, а не рыночные показатели продукта.",
+      "Имеющиеся {{capital_vs_cash.cash_on_hand|money}} на рыночных числах заканчиваются в {{cases.market.cash_out_month|month}}. Потребность в капитале лежит внутри типичного pre-seed раунда ({{capital_vs_round.round_low_model_ccy|money}}–{{capital_vs_round.round_high_model_ccy|money}}, Carta, США) — это оценка размера, а не утверждение, что раунд можно привлечь."
+    ]
+  },
+  "founder_case": {
+    "lead": "Если команда права по всем числам сразу, бизнес выходит в плюс на {{cases.founder.breakeven_month|month}} и требует {{cases.founder.peak_capital_need|money}}.",
+    "paragraphs": [
+      "К 12-му месяцу набирается {{cases.founder.milestones.m12.customers|int}} клиник и {{cases.founder.milestones.m12.mrr|money}} в месяц — цель команды в 60 клиник за год недостижима даже на её собственном темпе в две клиники в месяц. К концу горизонта — {{cases.founder.milestones.end.customers|int}} клиник и {{cases.founder.milestones.end.mrr|money}} в месяц.",
+      "Для этого должны одновременно держаться нулевой отток, зарплаты по {{cases.founder.inputs.fte_cost|money}} и стабильный поток из восьми демо в месяц из личной сети. Нулевой отток — самое сильное из допущений: он даёт срок жизни клиента, ограниченный только горизонтом расчёта, и нагруженное соотношение {{cases.founder.unit_economics.ltv_cac_headline|mult}} с окупаемостью {{cases.founder.unit_economics.payback_headline|months}} месяцев.",
+      "Даже в этом случае касса заканчивается в {{cases.founder.cash_out_month|month}}: потребность в капитале {{cases.founder.peak_capital_need|money}} превышает имеющиеся {{capital_vs_cash.cash_on_hand|money}}. Разрыв закрывается либо отказом от зарплат на первый год, либо небольшим раундом, либо темпом продаж выше двух клиник в месяц."
+    ]
+  },
+  "competition": {
+    "lead": "Продукт стоит в нише, где лист ожидания и напоминания уже встроены в платформы записи; отличие — тариф за клинику, отсутствие договора и фокус только на заполнении слотов.",
+    "dimensions": [
+      {
+        "key": "refill",
+        "label": "Автозаполнение отменённых слотов",
+        "why": "Именно за возвращённые часы кресла клиника готова платить; напоминания сами по себе есть у всех."
+      },
+      {
+        "key": "billing",
+        "label": "Тариф и договор",
+        "why": "Оплата за клинику, а не за врача, и помесячная отмена определяют цену для клиники с несколькими врачами и порог входа."
+      },
+      {
+        "key": "integration",
+        "label": "Интеграция с календарём клиники",
+        "why": "Без записи в расписание практик-софта продукт требует двойного ведения календаря, что убивает удержание."
+      }
+    ],
+    "rows": [
+      {
+        "name": "DentiQueue",
+        "layer": "direct",
+        "price": "€149 / клинику / мес., без договора",
+        "cells": {
+          "refill": "да, из листа ожидания автоматически",
+          "billing": "за клинику, помесячно",
+          "integration": "неизвестно — команда не описала"
+        },
+        "source": "бриф основателей",
+        "self": true
+      },
+      {
+        "name": "Dr. Flex (Берлин)",
+        "layer": "direct",
+        "price": "€99–169 / практику / мес. (Flat) или €39 + €3,99 за бронь",
+        "cells": {
+          "refill": "да, «digitale Nachrückerliste» в тарифе Flat",
+          "billing": "за практику по числу календарей, помесячно",
+          "integration": "виджет записи, интеграции с практик-софтом"
+        },
+        "source": "https://dr-flex.de/aerzte/preis · 2026"
+      },
+      {
+        "name": "Doctolib (Австрия через Doctory)",
+        "layer": "direct",
+        "price": "от €139 / врача / мес., длительный договор",
+        "cells": {
+          "refill": "да, «Warteliste» на освободившиеся слоты",
+          "billing": "за каждого врача, минимальный срок договора",
+          "integration": "собственный календарь или полное PVS"
+        },
+        "source": "https://adfera.de/ratgeber/doctolib-kosten/ · https://info.doctolib.de/preis/ · 2026"
+      },
+      {
+        "name": "Weave / RevenueWell / Adit (США)",
+        "layer": "direct",
+        "price": "$200–500 / локацию / мес.",
+        "cells": {
+          "refill": "да, заявленная доля заполнения 60–70 %",
+          "billing": "за локацию",
+          "integration": "с американскими практик-системами"
+        },
+        "source": "https://expertity.com/toolpick/best-dental-patient-communication-software.html · 2026"
+      },
+      {
+        "name": "Ресепшн обзванивает лист ожидания вручную",
+        "layer": "indirect",
+        "price": "время ассистента, около €25 в час",
+        "cells": {
+          "refill": "да, вручную; заявленная доля заполнения около 20 %",
+          "billing": "нет",
+          "integration": "не требуется"
+        },
+        "source": "https://adfera.de/ratgeber/doctolib-kosten/ (ставка MFA) · вендорские оценки"
+      },
+      {
+        "name": "Модуль напоминаний в практик-софте клиники",
+        "layer": "indirect",
+        "price": "в лицензии, SMS часто по факту",
+        "cells": {
+          "refill": "нет или частично",
+          "billing": "в составе лицензии",
+          "integration": "нативная"
+        },
+        "source": "исследование категории"
+      },
+      {
+        "name": "Вендоры практик-софта добавляют автозаполнение",
+        "layer": "displacer",
+        "price": "в лицензии",
+        "cells": {
+          "refill": "возможно в течение года-двух",
+          "billing": "в составе лицензии",
+          "integration": "нативная"
+        },
+        "source": "оценка аналитика по структуре рынка"
+      }
+    ],
+    "paragraphs": [
+      "По автозаполнению слотов продукт на уровне прямых конкурентов: Dr. Flex и Doctolib уже продают ту же функцию, а американские пакеты публикуют долю заполнения. По тарифу продукт выигрывает у Doctolib для клиник с несколькими врачами (одна цена за клинику против цены за каждого врача) и проигрывает Dr. Flex по нижней границе цены. По интеграции с календарём клиники позиция не описана — это самый слабый пункт таблицы, потому что без неё ресепшн ведёт два расписания.",
+      "Уязвимость структурная: у Doctolib функция листа ожидания уже есть, а его австрийская база растёт после покупки Doctory. Защитой может быть только скорость внедрения, помесячная отмена и интеграция с теми практик-системами, до которых крупные платформы не дошли."
+    ],
+    "where_we_win": "Клиника с несколькими врачами и установленным практик-софтом, которой нужен только возврат отменённых часов без замены системы записи и без годового договора."
+  },
+  "next_90_days": [
+    {
+      "domain": "fte_cost",
+      "title": "Зафиксировать бюджет команды до раунда",
+      "what": "Стоимость команды — самая большая строка моста; от неё зависит, хватит ли кассы до pre-seed раунда через девять месяцев.",
+      "how": "План кассы на 12 месяцев с зарплатами основателей как единственной переменной; ежемесячная сверка факта.",
+      "threshold": "Суммарная зарплата основателей не выше {{cases.founder.inputs.monthly_fixed_burn|money}} в месяц до закрытия раунда; при перерасходе больше одного месяца — вернуться к нулевым зарплатам."
+    },
+    {
+      "domain": "monthly_churn",
+      "title": "Когортная таблица оттока",
+      "what": "Нулевой отток — самое сильное допущение команды и её собственный критерий остановки; без когортной таблицы это заявление, а не измерение.",
+      "how": "Экспорт из платёжной системы по месяцам старта; отдельно клиники после пробного периода; отслеживать число заполненных слотов на клинику как ранний сигнал.",
+      "threshold": "Не больше 3 из первых 20 клиник отменили подписку в течение 3 месяцев; заполненных слотов не меньше 4 на клинику в месяц."
+    },
+    {
+      "domain": "cac",
+      "title": "Учёт денежных затрат на привлечение",
+      "what": "Рыночной оценки денежного CAC для продаж основателем нет; число команды — это €200 на инструменты и мероприятия, делённые на две подписки.",
+      "how": "Вести журнал расходов на мероприятия, инструменты и поездки по месяцам и делить на число подписанных клиник.",
+      "threshold": "Денежный CAC не выше {{cases.founder.inputs.arpu0|money}} — одного месяца подписки — по итогам 90 дней."
+    },
+    {
+      "domain": "new_customers_per_month",
+      "title": "Продажи вне личной сети",
+      "what": "Все шесть клиник пришли из личной сети и одной ассоциации; цель в 60 клиник требует потока демо вдвое больше нынешнего.",
+      "how": "Холодный контакт с клиниками вне сети (другие районы Вены, Грац, Линц) через LinkedIn и телефон; учёт контактов, демо и подписок отдельно от тёплых.",
+      "threshold": "40 холодных контактов за 30 дней дают не меньше 4 демо и 1 подписку; итого не меньше 2 новых клиник в месяц три месяца подряд."
+    },
+    {
+      "domain": "other",
+      "title": "Интеграция с практик-софтом",
+      "what": "Позиция по интеграции с календарём клиники не описана, а она решает удержание и защиту от платформ.",
+      "how": "Опрос шести действующих клиник: какое ПО ведёт расписание и ведут ли они два календаря; техническая оценка API двух самых частых систем.",
+      "threshold": "К концу 90 дней — рабочая интеграция хотя бы с одной системой, покрывающей не меньше половины клиентов."
+    }
+  ],
+  "risks": [
+    {
+      "title": "Doctolib продвигает лист ожидания в Австрии",
+      "likelihood": "High",
+      "reversibility": "Structural",
+      "what": "Doctolib уже имеет функцию заполнения освободившихся слотов и расширяет австрийскую базу после покупки Doctory; агрессивное продвижение делает продукт DentiQueue «одной функцией из пакета».",
+      "impact": "Поток демо падает ниже рыночного края, и потребность в капитале растёт выше {{cases.pessimistic.peak_capital_need|money}}; вне модели — давление на цену.",
+      "signal": "2 и больше клиник за 90 дней называют Doctolib причиной отказа или ухода.",
+      "action": "Сместить фокус на клиники с практик-софтом без платформы записи и на многоврачебные клиники, где тариф за клинику даёт видимую экономию."
+    },
+    {
+      "title": "Обработка данных пациентов (GDPR)",
+      "likelihood": "Medium",
+      "reversibility": "Reversible",
+      "what": "Продукт хранит имена, телефоны и типы приёмов пациентов; отсутствие договоров об обработке с каждой клиникой или SMS-провайдер вне ЕС останавливают продажи по требованию юристов клиник.",
+      "impact": "Вне модели: задержка подписаний и разовые юридические расходы; при остановке продаж на 3 месяца поток новых клиник падает до нуля, а потребность в капитале растёт выше {{cases.market.peak_capital_need|money}}.",
+      "signal": "Один запрос договора об обработке данных без готового шаблона в течение 30 дней.",
+      "action": "Подготовить стандартный договор об обработке данных и перевести SMS на провайдера с обработкой в ЕС до следующих подписаний."
+    },
+    {
+      "title": "Личная сеть основателей исчерпывается",
+      "likelihood": "Medium",
+      "reversibility": "Reversible",
+      "what": "Все действующие клиники пришли через знакомых и одну ассоциацию; после исчерпания тёплых контактов поток демо падает.",
+      "impact": "При темпе ниже {{cases.pessimistic.inputs.new_customers_per_month_full|int}} клиник в месяц потребность в капитале превышает {{cases.pessimistic.peak_capital_need|money}}, а выход в плюс не наступает в горизонте.",
+      "signal": "Меньше 6 демо в месяц два месяца подряд.",
+      "action": "Запустить холодный канал и партнёрство с дилерами практик-софта; рассмотреть платный канал с бюджетом, из которого выводится CAC."
+    }
+  ],
+  "appendix": {
+    "evidence": [
+      [
+        "Утверждение",
+        "Значение",
+        "Источник",
+        "Уровень",
+        "Дата"
+      ],
+      [
+        "Практикующие стоматологи Вены (niedergelassen)",
+        "954",
+        "ÖZÄK Standesmeldung, Standesmeldung за сентябрь",
+        "primary",
+        "09.2026"
+      ],
+      [
+        "Практикующие стоматологи Австрии (niedergelassen)",
+        "3 768",
+        "ÖZÄK Standesmeldung, Standesmeldung за сентябрь",
+        "primary",
+        "09.2026"
+      ],
+      [
+        "Dr. Flex, цена за практику, лист ожидания и напоминания включены",
+        "Flat €99–169 по числу календарей (€139 за два); Starter €39 + €3,99 за бронь",
+        "dr-flex.de/aerzte/preis",
+        "primary",
+        "2026"
+      ],
+      [
+        "Doctolib, цена за врача",
+        "€139 Light/Pro, до €499; в Австрии около €130–200; длительные договоры",
+        "adfera.de/ratgeber/doctolib-kosten; info.doctolib.de/preis",
+        "secondary",
+        "08.2026"
+      ],
+      [
+        "Пакеты для стоматологий в США (Weave, RevenueWell, Adit, Yapi)",
+        "$200–500 за локацию в месяц",
+        "expertity.com/toolpick",
+        "secondary",
+        "2026"
+      ],
+      [
+        "Масштаб Dr. Flex",
+        "14 100+ специалистов, без внешнего финансирования, с 2014",
+        "dr-flex.de, блог «zehn Jahre Dr. Flex»",
+        "primary",
+        "2025"
+      ],
+      [
+        "Масштаб Doctolib",
+        "500 000+ специалистов в Европе, 120 000 в Германии",
+        "info.doctolib.de",
+        "primary",
+        "2026"
+      ],
+      [
+        "Доля неявок в стоматологии",
+        "7,4 % (Хельсинки, публичная служба); в среднем около 15 % по вендорским обзорам",
+        "BMC Oral Health (Хельсинки) через PMC; clerri.com",
+        "primary / secondary",
+        "2025 / 2026"
+      ],
+      [
+        "Стоимость пустого часа кресла",
+        "$475–800 в час (США)",
+        "scottleune.com",
+        "secondary",
+        "2025"
+      ],
+      [
+        "Отток подписок малого бизнеса",
+        "3–7 % в месяц; медиана 6,5 % при ARR до $300k",
+        "churn.saas.smb.2026; saasflywheel.io",
+        "secondary",
+        "01.2026"
+      ],
+      [
+        "Валовая маржа SaaS",
+        "70–90 %",
+        "margin.saas (KeyBanc/OpenView) — устарел",
+        "survey",
+        "2024"
+      ],
+      [
+        "Зарплата основателя на pre-seed",
+        "около $50k в год (США)",
+        "kruzeconsulting.com; foundercomp.creandum.com",
+        "secondary",
+        "2025"
+      ],
+      [
+        "Конверсия демо→оплата, малый бизнес",
+        "15–30 %",
+        "conv.demo.close.smb",
+        "secondary",
+        "2025"
+      ],
+      [
+        "Ёмкость продаж основателя",
+        "8–15 встреч в неделю",
+        "capacity.founder_led — не верифицирован",
+        "secondary",
+        "2025"
+      ],
+      [
+        "Типичный pre-seed раунд",
+        "$250k–1M (США, Carta, n=50 316)",
+        "библиотека: round.pre_seed (Carta, США, 2025)",
+        "survey",
+        "02.2026"
+      ]
+    ]
+  },
+  "manual_numbers": [
+    {
+      "value": "90",
+      "field": "окно проверки, дней",
+      "source": "предложенный тест",
+      "where": [
+        "conditions",
+        "story",
+        "next_90_days",
+        "assumptions.stories",
+        "risks"
+      ],
+      "context": "90 дней"
+    },
+    {
+      "value": "20",
+      "field": "первые клиники, шт.",
+      "source": "критерий остановки основателей",
+      "where": [
+        "conditions",
+        "assumptions.stories",
+        "next_90_days"
+      ],
+      "context": "первых 20 клиник"
+    },
+    {
+      "value": "3",
+      "field": "ушедшие клиники, шт.",
+      "source": "критерий остановки основателей",
+      "where": [
+        "conditions",
+        "assumptions.stories",
+        "next_90_days"
+      ],
+      "context": "не больше 3"
+    },
+    {
+      "value": "3",
+      "field": "окно критерия, месяцев",
+      "source": "критерий остановки основателей",
+      "where": [
+        "conditions",
+        "assumptions.stories",
+        "next_90_days"
+      ],
+      "context": "3 месяца"
+    },
+    {
+      "value": "12",
+      "field": "горизонт плана, месяцев",
+      "source": "цель основателей",
+      "where": [
+        "assumptions.stories",
+        "founder_case",
+        "next_90_days"
+      ],
+      "context": "12 месяцев"
+    },
+    {
+      "value": "12",
+      "field": "месяц цели",
+      "source": "цель основателей",
+      "where": [
+        "founder_case"
+      ],
+      "context": "К 12-му месяцу"
+    },
+    {
+      "value": "60",
+      "field": "цель по клиникам, шт.",
+      "source": "цель основателей",
+      "where": [
+        "assumptions.stories",
+        "founder_case",
+        "next_90_days"
+      ],
+      "context": "60 клиник"
+    },
+    {
+      "value": "6,5",
+      "field": "медианный отток, % в месяц",
+      "source": "ChartMogul через saasflywheel.io, 2026",
+      "where": [
+        "assumptions.stories",
+        "comparison.notes",
+        "appendix.evidence"
+      ],
+      "context": "6,5 %"
+    },
+    {
+      "value": "300k",
+      "field": "порог ARR бенчмарка, $",
+      "source": "ChartMogul через saasflywheel.io, 2026",
+      "where": [
+        "assumptions.stories",
+        "comparison.notes",
+        "appendix.evidence"
+      ],
+      "context": "$300k"
+    },
+    {
+      "value": "12",
+      "field": "себестоимость на клинику, €",
+      "source": "бриф основателей (хостинг и SMS)",
+      "where": [
+        "assumptions.stories"
+      ],
+      "context": "€12 на клинику"
+    },
+    {
+      "value": "15",
+      "field": "порог себестоимости на клинику, €",
+      "source": "предложенный тест",
+      "where": [
+        "assumptions.stories"
+      ],
+      "context": "€15 на клинику"
+    },
+    {
+      "value": "99",
+      "field": "цена Dr. Flex, нижняя, €",
+      "source": "dr-flex.de/aerzte/preis, 2026",
+      "where": [
+        "assumptions.stories",
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "€99"
+    },
+    {
+      "value": "169",
+      "field": "цена Dr. Flex, верхняя, €",
+      "source": "dr-flex.de/aerzte/preis, 2026",
+      "where": [
+        "assumptions.stories",
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "99–169"
+    },
+    {
+      "value": "139",
+      "field": "цена Doctolib за врача, €",
+      "source": "adfera.de, info.doctolib.de, 2026",
+      "where": [
+        "assumptions.stories",
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "€139"
+    },
+    {
+      "value": "39",
+      "field": "цена Dr. Flex Starter, €",
+      "source": "dr-flex.de/aerzte/preis, 2026",
+      "where": [
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "€39"
+    },
+    {
+      "value": "3,99",
+      "field": "цена Dr. Flex за бронь, €",
+      "source": "dr-flex.de/aerzte/preis, 2026",
+      "where": [
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "€3,99 за бронь"
+    },
+    {
+      "value": "149",
+      "field": "цена DentiQueue, €",
+      "source": "бриф основателей",
+      "where": [
+        "competition.rows"
+      ],
+      "context": "€149 / клинику"
+    },
+    {
+      "value": "200",
+      "field": "цена пакетов США, нижняя, $",
+      "source": "expertity.com/toolpick, 2026",
+      "where": [
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "$200"
+    },
+    {
+      "value": "500",
+      "field": "цена пакетов США, верхняя, $",
+      "source": "expertity.com/toolpick, 2026",
+      "where": [
+        "competition.rows",
+        "appendix.evidence"
+      ],
+      "context": "200–500"
+    },
+    {
+      "value": "60",
+      "field": "доля заполнения, нижняя, %",
+      "source": "заявление вендоров (Weave, NexHealth)",
+      "where": [
+        "competition.rows"
+      ],
+      "context": "60–70 %"
+    },
+    {
+      "value": "70",
+      "field": "доля заполнения, верхняя, %",
+      "source": "заявление вендоров (Weave, NexHealth)",
+      "where": [
+        "competition.rows"
+      ],
+      "context": "60–70 %"
+    },
+    {
+      "value": "20",
+      "field": "доля заполнения вручную, %",
+      "source": "заявление вендоров",
+      "where": [
+        "competition.rows"
+      ],
+      "context": "около 20 %"
+    },
+    {
+      "value": "25",
+      "field": "ставка ассистента, € в час",
+      "source": "adfera.de (ставка MFA)",
+      "where": [
+        "competition.rows"
+      ],
+      "context": "€25 в час"
+    },
+    {
+      "value": "90",
+      "field": "порог оплаты второго месяца, %",
+      "source": "предложенный тест",
+      "where": [
+        "assumptions.stories"
+      ],
+      "context": "не меньше 90 %"
+    },
+    {
+      "value": "10",
+      "field": "следующие клиники, шт.",
+      "source": "предложенный тест",
+      "where": [
+        "assumptions.stories"
+      ],
+      "context": "следующих 10 клиник"
+    },
+    {
+      "value": "8",
+      "field": "демо в месяц",
+      "source": "бриф основателей",
+      "where": [
+        "assumptions.stories",
+        "comparison.notes"
+      ],
+      "context": "8 демо"
+    },
+    {
+      "value": "15",
+      "field": "конверсия демо→оплата, нижняя, %",
+      "source": "conv.demo.close.smb",
+      "where": [
+        "assumptions.stories",
+        "comparison.notes",
+        "appendix.evidence"
+      ],
+      "context": "15–30 %"
+    },
+    {
+      "value": "30",
+      "field": "конверсия демо→оплата, верхняя, %",
+      "source": "conv.demo.close.smb",
+      "where": [
+        "assumptions.stories",
+        "comparison.notes",
+        "appendix.evidence"
+      ],
+      "context": "15–30 %"
+    },
+    {
+      "value": "40",
+      "field": "холодные контакты, шт.",
+      "source": "предложенный тест",
+      "where": [
+        "assumptions.stories",
+        "next_90_days"
+      ],
+      "context": "40 клиник"
+    },
+    {
+      "value": "40",
+      "field": "холодные контакты, шт.",
+      "source": "предложенный тест",
+      "where": [
+        "next_90_days"
+      ],
+      "context": "40 холодных контактов"
+    },
+    {
+      "value": "30",
+      "field": "окно теста, дней",
+      "source": "предложенный тест",
+      "where": [
+        "assumptions.stories",
+        "next_90_days",
+        "risks"
+      ],
+      "context": "30 дней"
+    },
+    {
+      "value": "200",
+      "field": "расходы на инструменты и мероприятия, € в месяц",
+      "source": "бриф основателей",
+      "where": [
+        "next_90_days"
+      ],
+      "context": "€200 на инструменты"
+    },
+    {
+      "value": "954",
+      "field": "стоматологи Вены",
+      "source": "ÖZÄK 09.2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "954"
+    },
+    {
+      "value": "3 768",
+      "field": "стоматологи Австрии",
+      "source": "ÖZÄK 09.2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "3 768"
+    },
+    {
+      "value": "499",
+      "field": "цена Doctolib All-in-One, €",
+      "source": "adfera.de, 2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "до €499"
+    },
+    {
+      "value": "130",
+      "field": "цена Doctolib Австрия, нижняя, €",
+      "source": "mypraxis.at через поиск, 2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "€130–200"
+    },
+    {
+      "value": "200",
+      "field": "цена Doctolib Австрия, верхняя, €",
+      "source": "mypraxis.at через поиск, 2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "€130–200"
+    },
+    {
+      "value": "14 100",
+      "field": "специалисты Dr. Flex",
+      "source": "dr-flex.de, 2025",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "14 100+"
+    },
+    {
+      "value": "2014",
+      "field": "год основания Dr. Flex",
+      "source": "dr-flex.de",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "с 2014"
+    },
+    {
+      "value": "500 000",
+      "field": "специалисты Doctolib Европа",
+      "source": "info.doctolib.de",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "500 000+"
+    },
+    {
+      "value": "120 000",
+      "field": "специалисты Doctolib Германия",
+      "source": "info.doctolib.de",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "120 000"
+    },
+    {
+      "value": "7,4",
+      "field": "доля неявок, %",
+      "source": "PMC12535098",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "7,4 %"
+    },
+    {
+      "value": "15",
+      "field": "доля неявок средняя, %",
+      "source": "clerri.com",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "около 15 %"
+    },
+    {
+      "value": "475",
+      "field": "стоимость часа кресла, нижняя, $",
+      "source": "scottleune.com",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "$475"
+    },
+    {
+      "value": "800",
+      "field": "стоимость часа кресла, верхняя, $",
+      "source": "scottleune.com",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "$475–800"
+    },
+    {
+      "value": "3",
+      "field": "отток, нижняя, %",
+      "source": "churn.saas.smb.2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "3–7 %"
+    },
+    {
+      "value": "7",
+      "field": "отток, верхняя, %",
+      "source": "churn.saas.smb.2026",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "3–7 %"
+    },
+    {
+      "value": "70",
+      "field": "маржа SaaS, нижняя, %",
+      "source": "margin.saas",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "70–90 %"
+    },
+    {
+      "value": "90",
+      "field": "маржа SaaS, верхняя, %",
+      "source": "margin.saas",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "70–90 %"
+    },
+    {
+      "value": "50k",
+      "field": "зарплата основателя pre-seed, $ в год",
+      "source": "kruzeconsulting.com",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "$50k"
+    },
+    {
+      "value": "8",
+      "field": "встречи в неделю, нижняя",
+      "source": "capacity.founder_led",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "8–15 встреч"
+    },
+    {
+      "value": "15",
+      "field": "встречи в неделю, верхняя",
+      "source": "capacity.founder_led",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "8–15 встреч"
+    },
+    {
+      "value": "250k",
+      "field": "pre-seed раунд, нижняя, $",
+      "source": "round.pre_seed.us.2025",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "$250k"
+    },
+    {
+      "value": "1M",
+      "field": "pre-seed раунд, верхняя, $",
+      "source": "round.pre_seed.us.2025",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "$250k–1M"
+    },
+    {
+      "value": "50 316",
+      "field": "n Carta",
+      "source": "round.pre_seed.us.2025",
+      "where": [
+        "appendix.evidence"
+      ],
+      "context": "n=50 316"
+    },
+    {
+      "value": "4",
+      "field": "порог заполненных слотов на клинику в месяц",
+      "source": "предложенный тест",
+      "where": [
+        "next_90_days"
+      ],
+      "context": "не меньше 4 на клинику"
+    },
+    {
+      "value": "4",
+      "field": "порог демо из холодных контактов",
+      "source": "предложенный тест",
+      "where": [
+        "assumptions.stories",
+        "next_90_days"
+      ],
+      "context": "не меньше 4 демо"
+    },
+    {
+      "value": "6",
+      "field": "порог демо в месяц (сигнал риска)",
+      "source": "предложенный сигнал",
+      "where": [
+        "risks"
+      ],
+      "context": "Меньше 6 демо"
+    },
+    {
+      "value": "2",
+      "field": "новые клиники в месяц, порог",
+      "source": "число команды",
+      "where": [
+        "conditions",
+        "next_90_days"
+      ],
+      "context": "2 новых клиник"
+    }
+  ]
+}

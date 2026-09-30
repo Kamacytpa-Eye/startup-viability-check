@@ -1,0 +1,1193 @@
+{
+ "_schema": {
+  "tier": "primary = company filings, platform-published prices/take rates, ad-platform reported CPC/CPM, regulator data · survey = aggregated dataset with stated n and method (OpenView, ChartMogul, SaaS Capital, KeyBanc, ProfitWell) · secondary = practitioner posts, vendor blogs, roundups without stated n · method/derived = a formula or definition, not a source",
+  "confidence_from_tier": "primary → medium (high only when the comparable is a direct competitor) · survey → medium · secondary → low",
+  "rule": "Cite the entry id in the calibration basis. When research finds a fresher or higher-tier source for the same domain, add it as a new entry rather than overwriting; the newest highest-tier entry wins.",
+  "refresh": "entries older than 24 months are flagged stale in the reality card; research step must try to replace them",
+  "archetype_rule": "Before picking a churn/repeat benchmark, ask: does the product REPLACE an existing habit (email, spreadsheets, a paid tool) or CREATE a new behaviour (live audio, a new ritual, a novelty device)? New-behaviour products use the novelty entries, not the category entries — their retention has no floor from the old habit.",
+  "url_rule": "primary and survey entries must carry a URL to the original; an entry whose figure was transcribed from a summary, or that rests on practitioner consensus without a URL, is tier secondary and carries verified:false — research must replace it before it is load-bearing"
+ },
+ "entries": [
+  {
+   "id": "churn.saas.smb.2026",
+   "domain": "monthly_churn_rate_range",
+   "applies": {
+    "type": "saas",
+    "segment": "smb_prosumer"
+   },
+   "value": [
+    3,
+    7
+   ],
+   "unit": "% per month",
+   "tier": "secondary",
+   "source": "SaaSFlywheel / ChurnTools churn benchmarks 2026",
+   "url": "https://saasflywheel.io/blog/saas-churn-rate-benchmarks-2026",
+   "date": "2026-01",
+   "n": null,
+   "note": "early-stage self-serve <$300k ARR median 5–7 %",
+   "verified": true
+  },
+  {
+   "id": "churn.saas.midmarket.2026",
+   "domain": "monthly_churn_rate_range",
+   "applies": {
+    "type": "saas",
+    "segment": "mid_market"
+   },
+   "value": [
+    1.5,
+    3
+   ],
+   "unit": "% per month",
+   "tier": "secondary",
+   "source": "ChurnTools churn by company size",
+   "url": "https://churntools.com/churn-rate-by-size",
+   "date": "2026-01",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "churn.saas.enterprise.2026",
+   "domain": "monthly_churn_rate_range",
+   "applies": {
+    "type": "saas",
+    "segment": "enterprise"
+   },
+   "value": [
+    0.5,
+    2
+   ],
+   "unit": "% per month",
+   "tier": "secondary",
+   "source": "ChurnTools churn by company size",
+   "url": "https://churntools.com/churn-rate-by-size",
+   "date": "2026-01",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "churn.consumer.sub.2026",
+   "domain": "monthly_churn_rate_range",
+   "applies": {
+    "type": "consumer_subscription"
+   },
+   "value": [
+    5,
+    15
+   ],
+   "unit": "% per month",
+   "tier": "secondary",
+   "source": "ChurnTools consumer <$500 ACV ~9 %",
+   "url": "https://churntools.com/churn-rate-by-size",
+   "date": "2026-01",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "churn.agency.project.2025",
+   "domain": "annual_client_churn",
+   "applies": {
+    "type": "services",
+    "motion": "project_based"
+   },
+   "value": [
+    30,
+    50
+   ],
+   "unit": "% per year",
+   "tier": "secondary",
+   "source": "Sakas & Company — acceptable agency client turnover",
+   "url": "https://sakasandcompany.com/client-turnover-rates/",
+   "date": "2025",
+   "n": null,
+   "note": "retainer agencies: >20 %/yr is a red flag",
+   "verified": true
+  },
+  {
+   "id": "conv.trial.nocard.2026",
+   "domain": "conversion_range",
+   "applies": {
+    "motion": "plg",
+    "trial": "no_card"
+   },
+   "value": [
+    4,
+    15
+   ],
+   "unit": "% trial→paid",
+   "tier": "survey",
+   "source": "ChartMogul / Growth Unhinged / ProductLed — The Conversion Report 2026 (survey, n=200, Jan 2026)",
+   "url": "https://chartmogul.com/reports/saas-conversion-report/",
+   "date": "2026-02",
+   "n": 200,
+   "note": "GOOD (50th pct) 4–6 %, GREAT (75th pct) 10–15 % for free trial without card; median across all products 8 %; window = paying within 6 months of signup",
+   "definition": "free-to-paid = share of leads/free signups that become paying within 6 months (survey question wording); do not pool with freemium or card-required",
+   "verified": true
+  },
+  {
+   "id": "conv.trial.card.2026",
+   "domain": "conversion_range",
+   "applies": {
+    "motion": "plg",
+    "trial": "card_required"
+   },
+   "value": [
+    25,
+    60
+   ],
+   "unit": "% trial→paid",
+   "tier": "survey",
+   "source": "ChartMogul / Growth Unhinged / ProductLed — The Conversion Report 2026 (survey, n=200, Jan 2026)",
+   "url": "https://chartmogul.com/reports/saas-conversion-report/",
+   "date": "2026-02",
+   "n": 200,
+   "definition": "free-to-paid = share of leads/free signups that become paying within 6 months (survey question wording)",
+   "note": "GOOD 25–35 %, GREAT 50–60 % with credit card required; average 30 %; only 20 % of trial products require a card and signup rate drops (3.5 % of visitors vs 4.5 %)",
+   "verified": true
+  },
+  {
+   "id": "conv.freemium.2026",
+   "domain": "conversion_range",
+   "applies": {
+    "motion": "plg",
+    "trial": "freemium"
+   },
+   "value": [
+    3,
+    12
+   ],
+   "unit": "% free→paid",
+   "tier": "survey",
+   "source": "ChartMogul / Growth Unhinged / ProductLed — The Conversion Report 2026 (survey, n=200, Jan 2026)",
+   "url": "https://chartmogul.com/reports/saas-conversion-report/",
+   "date": "2026-02",
+   "n": 200,
+   "verified": true,
+   "note": "GOOD 3–5 %, GREAT 8–12 % for freemium with regular signup; ungated freemium GOOD 7–9 %; average 5.5 %; window 6 months"
+  },
+  {
+   "id": "conv.oneoff.cold.2026",
+   "domain": "conversion_range",
+   "applies": {
+    "unit": "one_off",
+    "traffic": "cold"
+   },
+   "value": [
+    2,
+    5
+   ],
+   "unit": "% visit→purchase",
+   "tier": "secondary",
+   "source": "ReferralCandy subscription vs one-time",
+   "url": "https://www.referralcandy.com/blog/subscription-vs-one-time-ecommerce",
+   "date": "2026",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "conv.demo.close.smb",
+   "domain": "conversion_range",
+   "applies": {
+    "motion": "founder_led|inside_sales",
+    "segment": "smb"
+   },
+   "value": [
+    15,
+    30
+   ],
+   "unit": "% demo→close",
+   "tier": "secondary",
+   "source": "practitioner consensus; ClearlyRated sendout-to-placement 4:1–8:1 for staffing",
+   "url": "https://www.clearlyrated.ai/blog/staffing-agency-success-metrics",
+   "date": "2025",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "cac.microsaas.organic.2025",
+   "domain": "cac_range",
+   "applies": {
+    "motion": "organic|viral|developer",
+    "type": "saas",
+    "stage": "bootstrapped"
+   },
+   "value": [
+    0,
+    50
+   ],
+   "unit": "$ per customer (excl. founder time)",
+   "tier": "secondary",
+   "source": "Indie Hackers — organic growth tactics 2025",
+   "url": "https://www.indiehackers.com/post/7-organic-growth-tactics-bootstrapped-saas-teams-are-using-to-scale-in-2025-57ecf50651",
+   "date": "2025",
+   "n": null,
+   "note": "community $0–10, content $20–40, referral $10–20; compounds 6–12 months",
+   "verified": true
+  },
+  {
+   "id": "cac.microsaas.paid.2025",
+   "domain": "cac_range",
+   "applies": {
+    "motion": "paid",
+    "type": "saas",
+    "stage": "bootstrapped"
+   },
+   "value": [
+    200,
+    500
+   ],
+   "unit": "$ per customer",
+   "tier": "secondary",
+   "source": "Indie Hackers — organic growth tactics 2025",
+   "url": "https://www.indiehackers.com/post/7-organic-growth-tactics-bootstrapped-saas-teams-are-using-to-scale-in-2025-57ecf50651",
+   "date": "2025",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "cac.founder_led.timecost",
+   "domain": "cac_range",
+   "applies": {
+    "motion": "founder_led"
+   },
+   "value": null,
+   "unit": "derived",
+   "tier": "method",
+   "source": "founder hours per closed deal × founder monthly cost / 160",
+   "date": null,
+   "n": null,
+   "note": "10–25 h per SMB deal is a practitioner range; always show the time-cost version next to the cash version"
+  },
+  {
+   "id": "cpc.b2c.2025",
+   "domain": "cpc",
+   "applies": {
+    "motion": "paid",
+    "segment": "b2c"
+   },
+   "value": [
+    0.5,
+    3
+   ],
+   "unit": "$ per click",
+   "tier": "survey",
+   "source": "WordStream Google Ads benchmarks (annual)",
+   "url": "https://www.wordstream.com/blog/ws/2016/02/29/google-adwords-industry-benchmarks",
+   "date": "2025",
+   "n": null,
+   "note": "vertical-specific; refresh in research for the case's vertical",
+   "verified": true
+  },
+  {
+   "id": "cpc.b2b.smb.2025",
+   "domain": "cpc",
+   "applies": {
+    "motion": "paid",
+    "segment": "b2b_smb"
+   },
+   "value": [
+    3,
+    15
+   ],
+   "unit": "$ per click",
+   "tier": "survey",
+   "source": "WordStream Google Ads benchmarks (annual)",
+   "url": "https://www.wordstream.com/blog/ws/2016/02/29/google-adwords-industry-benchmarks",
+   "date": "2025",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "landing.cr.2025",
+   "domain": "landing_conversion",
+   "applies": {
+    "motion": "paid|organic"
+   },
+   "value": [
+    2,
+    5
+   ],
+   "unit": "% visit→signup/lead",
+   "tier": "survey",
+   "source": "Unbounce Conversion Benchmark Report",
+   "url": "https://unbounce.com/conversion-benchmark-report/",
+   "date": "2025",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "margin.saas",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "saas"
+   },
+   "value": [
+    70,
+    90
+   ],
+   "unit": "%",
+   "tier": "survey",
+   "source": "KeyBanc / OpenView SaaS surveys (widely reproduced)",
+   "url": "https://www.keybanccapitalmarkets.com/insights/saas-survey",
+   "date": "2024",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "margin.marketplace",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "marketplace"
+   },
+   "value": [
+    40,
+    70
+   ],
+   "unit": "% of take",
+   "tier": "secondary",
+   "source": "a16z marketplace 100 / practitioner consensus",
+   "date": "2024",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "margin.services",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "services"
+   },
+   "value": [
+    40,
+    65
+   ],
+   "unit": "%",
+   "tier": "secondary",
+   "source": "practitioner consensus (agency benchmarks)",
+   "date": "2024",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "margin.d2c",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "d2c_hardware"
+   },
+   "value": [
+    20,
+    50
+   ],
+   "unit": "% after COGS, shipping, returns",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2024",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "margin.placement.werkvertrag",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "services",
+    "model": "placement_commission_direct_contract"
+   },
+   "value": [
+    85,
+    95
+   ],
+   "unit": "%",
+   "tier": "derived",
+   "source": "commission-only revenue, talent contracts directly with client; cost = curation time",
+   "date": "2026",
+   "n": null
+  },
+  {
+   "id": "expansion.seat_b2b",
+   "domain": "expansion_rate_range",
+   "applies": {
+    "type": "saas",
+    "pricing": "seat"
+   },
+   "value": [
+    1.5,
+    3
+   ],
+   "unit": "% monthly",
+   "tier": "secondary",
+   "source": "derived from NRR 110–140 % (OpenView, cited)",
+   "date": "2024",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "expansion.consumer",
+   "domain": "expansion_rate_range",
+   "applies": {
+    "type": "consumer_subscription"
+   },
+   "value": [
+    0.5,
+    1.5
+   ],
+   "unit": "% monthly",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2024",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "expansion.oneoff",
+   "domain": "expansion_rate_range",
+   "applies": {
+    "unit": "one_off"
+   },
+   "value": [
+    0,
+    0.5
+   ],
+   "unit": "% monthly",
+   "tier": "derived",
+   "source": "no recurring base to expand",
+   "date": null,
+   "n": null
+  },
+  {
+   "id": "repeat.d2c",
+   "domain": "repeat_rate_pct",
+   "applies": {
+    "unit": "one_off",
+    "type": "d2c"
+   },
+   "value": [
+    20,
+    40
+   ],
+   "unit": "% buy again",
+   "tier": "secondary",
+   "source": "ReferralCandy / Eightx DTC repeat benchmarks",
+   "url": "https://eightx.co/blog/average-ltv-subscription-vs-one-time",
+   "date": "2026",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "repeat.single_purpose_tool",
+   "domain": "repeat_rate_pct",
+   "applies": {
+    "unit": "one_off",
+    "type": "single_purpose_tool"
+   },
+   "value": [
+    5,
+    20
+   ],
+   "unit": "% buy again",
+   "tier": "secondary",
+   "source": "practitioner estimate; validation tools (DimeADozen, ValidatorAI) sell reports, not subscriptions",
+   "date": "2026",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "take.talent_agency",
+   "domain": "take_rate_pct",
+   "applies": {
+    "type": "marketplace|services",
+    "model": "talent_agency"
+   },
+   "value": [
+    10,
+    20
+   ],
+   "unit": "% commission",
+   "tier": "secondary",
+   "source": "Aruna Talent creator-agency pricing; Matador agent commission guide",
+   "url": "https://arunatalent.com/blog/creator-agency-pricing/",
+   "date": "2025",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "take.malt",
+   "domain": "take_rate_pct",
+   "applies": {
+    "comparable": "Malt"
+   },
+   "value": [
+    5,
+    15
+   ],
+   "unit": "% (freelancer 10→5 after 6 mo; client 10–15)",
+   "tier": "primary",
+   "source": "Malt published fee schedule",
+   "url": "https://help.malt.com/hc/en-150/articles/29539691425938-Fees-at-Malt",
+   "date": "2026",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "price.ai_workshop.at_de",
+   "domain": "pricing",
+   "applies": {
+    "type": "services",
+    "product": "corporate_ai_workshop",
+    "region": "AT_DE"
+   },
+   "value": [
+    1490,
+    4300
+   ],
+   "unit": "€ per day",
+   "tier": "primary",
+   "source": "published prices: ki-kann-ich.at €1 990–3 490; r.digital from €1 490; ki-beratung-deutschland from €1 900; OptimusFlow €5 000 exec",
+   "url": "https://www.ki-kann-ich.at/unser-angebot---ki-kompetenz-an-einem-tag",
+   "date": "2026",
+   "n": 4,
+   "verified": true
+  },
+  {
+   "id": "cost.trainer_day.de",
+   "domain": "trainer_cost",
+   "applies": {
+    "type": "services",
+    "region": "DE"
+   },
+   "value": [
+    400,
+    2500
+   ],
+   "unit": "€ per day; mean 1 357",
+   "tier": "survey",
+   "source": "managerseminare Honorarstudie",
+   "url": "https://www.managerseminare.de/ms_Artikel/Honorarstudie-Was-kosten-Trainer,224932",
+   "date": "2025",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "price.validation_tools.2026",
+   "domain": "pricing",
+   "applies": {
+    "type": "single_purpose_tool",
+    "product": "startup_idea_validation"
+   },
+   "value": [
+    9,
+    129
+   ],
+   "unit": "$ per report",
+   "tier": "primary",
+   "source": "published prices: DimeADozen $9–129; ValidatorAI $49/3 sessions",
+   "url": "https://www.dimeadozen.ai/",
+   "date": "2026",
+   "n": 4,
+   "verified": true
+  },
+  {
+   "id": "dayrate.motion_designer.eu",
+   "domain": "project_value_input",
+   "applies": {
+    "role": "motion_designer",
+    "level": "mid",
+    "region": "EU"
+   },
+   "value": [
+    400,
+    520
+   ],
+   "unit": "$ per day; median 460",
+   "tier": "survey",
+   "source": "dayrates.org",
+   "url": "https://dayrates.org/motion-designer/eu/mid/",
+   "date": "2025-11",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "fte.cost.region",
+   "domain": "capital_intensity",
+   "applies": {
+    "region": "US_W_EU"
+   },
+   "value": [
+    6000,
+    12000
+   ],
+   "unit": "$ per FTE-month, early stage",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "fte.cost.e_eu_latam",
+   "domain": "capital_intensity",
+   "applies": {
+    "region": "E_EU_LATAM"
+   },
+   "value": [
+    2000,
+    5000
+   ],
+   "unit": "$ per FTE-month",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "capacity.founder_led",
+   "domain": "growth_capacity_input",
+   "applies": {
+    "motion": "founder_led"
+   },
+   "value": [
+    8,
+    15
+   ],
+   "unit": "meetings per week, one founder full-time on sales",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "capacity.sdr",
+   "domain": "growth_capacity_input",
+   "applies": {
+    "motion": "inside_sales"
+   },
+   "value": [
+    15,
+    30
+   ],
+   "unit": "meetings per SDR per month; ramp 3 mo",
+   "tier": "secondary",
+   "source": "practitioner consensus (Bridge Group cited)",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "capacity.ae_enterprise",
+   "domain": "growth_capacity_input",
+   "applies": {
+    "motion": "enterprise"
+   },
+   "value": [
+    4,
+    8
+   ],
+   "unit": "closed deals per AE per year; cycle 120–270 d",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "viral.k",
+   "domain": "k_factor",
+   "applies": {
+    "motion": "viral"
+   },
+   "value": [
+    0.2,
+    0.5
+   ],
+   "unit": "invites accepted per user",
+   "tier": "secondary",
+   "source": "practitioner consensus; >1 rare and short-lived",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "partner.listing_ctr",
+   "domain": "listing_ctr",
+   "applies": {
+    "motion": "partner"
+   },
+   "value": [
+    0.5,
+    2
+   ],
+   "unit": "% marketplace listing CTR; install→paid 3–8 %",
+   "tier": "secondary",
+   "source": "practitioner consensus",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing"
+  },
+  {
+   "id": "market.startups.eu",
+   "domain": "segment_size",
+   "applies": {
+    "segment": "new_startups_europe_per_year"
+   },
+   "value": [
+    52000,
+    52000
+   ],
+   "unit": "companies per year incl. pre-seed",
+   "tier": "secondary",
+   "source": "GlassDollar estimate",
+   "url": "https://medium.com/glassdollar/estimating-the-number-of-startups-in-europe-5d28286307f8",
+   "date": "2023",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "market.agencies.vienna",
+   "domain": "segment_size",
+   "applies": {
+    "segment": "advertising_agencies_vienna"
+   },
+   "value": [
+    6200,
+    6200
+   ],
+   "unit": "WKO members incl. one-person firms",
+   "tier": "primary",
+   "source": "WKO Fachverband Werbung via Statista",
+   "url": "https://de.statista.com/statistik/daten/studie/940509/umfrage/werbeagenturen-im-wko-fachverband-werbung-in-oesterreich-nach-bundeslaendern/",
+   "date": "2023",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "churn.consumer.novelty",
+   "domain": "monthly_churn_rate_range",
+   "applies": {
+    "type": "consumer",
+    "behaviour": "new"
+   },
+   "value": [
+    25,
+    45
+   ],
+   "unit": "% per month after month 1",
+   "tier": "secondary",
+   "source": "post-mortems of Clubhouse (DAU −70 % in 3 months, 2021), Vine, BeReal, Yo; consumer app D30 retention medians ~5–10 % (Adjust/AppsFlyer reports)",
+   "date": "2024",
+   "n": null,
+   "note": "applies when the product creates a behaviour that did not exist; category-subscription churn (5–15 %) is the wrong benchmark here · no URL — practitioner consensus; research step must replace with a cited source before it is load-bearing",
+   "verified": false
+  },
+  {
+   "id": "retention.consumer_app.d30",
+   "domain": "retention_d30",
+   "applies": {
+    "type": "consumer_app"
+   },
+   "value": [
+    3,
+    10
+   ],
+   "unit": "% of installs active on day 30 (median by category)",
+   "tier": "survey",
+   "source": "Adjust / AppsFlyer app retention benchmark reports",
+   "url": "https://www.adjust.com/resources/ebooks/app-trends/",
+   "date": "2024",
+   "n": null,
+   "verified": true
+  },
+  {
+   "id": "round.pre_seed.eu",
+   "domain": "typical_round",
+   "applies": {
+    "stage": "pre_seed",
+    "region": "EU"
+   },
+   "value": [
+    150000,
+    600000
+   ],
+   "unit": "€ raised",
+   "tier": "secondary",
+   "source": "Dealroom / Sifted European pre-seed medians",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "figure transcribed from Dealroom/Sifted summaries, not the report itself — verify at dealroom.co before it is load-bearing",
+   "currency": "EUR"
+  },
+  {
+   "id": "round.seed.eu",
+   "domain": "typical_round",
+   "applies": {
+    "stage": "seed",
+    "region": "EU"
+   },
+   "value": [
+    1000000,
+    3500000
+   ],
+   "unit": "€ raised",
+   "tier": "secondary",
+   "source": "Dealroom European seed medians",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "figure transcribed from Dealroom/Sifted summaries, not the report itself — verify at dealroom.co before it is load-bearing",
+   "currency": "EUR"
+  },
+  {
+   "id": "round.series_a.eu",
+   "domain": "typical_round",
+   "applies": {
+    "stage": "series_a",
+    "region": "EU"
+   },
+   "value": [
+    5000000,
+    15000000
+   ],
+   "unit": "€ raised",
+   "tier": "secondary",
+   "source": "Dealroom European Series A medians",
+   "date": "2025",
+   "n": null,
+   "verified": false,
+   "note": "figure transcribed from Dealroom/Sifted summaries, not the report itself — verify at dealroom.co before it is load-bearing",
+   "currency": "EUR"
+  },
+  {
+   "id": "bootstrap.capital",
+   "domain": "typical_round",
+   "applies": {
+    "stage": "bootstrap"
+   },
+   "value": [
+    0,
+    50000
+   ],
+   "unit": "€ founders' own money / revenue-funded",
+   "tier": "derived",
+   "source": "definition",
+   "date": null,
+   "n": null,
+   "currency": "EUR",
+   "verified": true,
+   "note": "definition used by this method: founders' own money and early revenue, up to ~€50k — not a market figure"
+  },
+  {
+   "id": "round.pre_seed.us.2025",
+   "domain": "typical_round",
+   "applies": {
+    "stage": "pre_seed",
+    "region": "US"
+   },
+   "value": [
+    250000,
+    1000000
+   ],
+   "unit": "$ raised on SAFEs / convertible notes",
+   "currency": "USD",
+   "tier": "survey",
+   "source": "Carta — State of Pre-Seed: 2025 in review (50 316 SAFEs and notes, US companies on Carta): the standard pre-seed instrument sits in the $250k–$1M band (val cap ~$10M); $1M–$2.5M is the upper band",
+   "url": "https://carta.com/data/state-of-pre-seed-2025/",
+   "date": "2026-02",
+   "n": 50316,
+   "verified": true,
+   "note": "US, not EU; use as the reference when funding_path=pre_seed and no verified EU entry exists — convert the model currency to USD at a recorded rate"
+  },
+  {
+   "id": "margin.services.2026",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "services"
+   },
+   "value": [
+    35.9,
+    37.7
+   ],
+   "unit": "% project margin (revenue minus direct delivery cost), professional-services firms",
+   "tier": "survey",
+   "source": "SPI Research, 2026 Professional Services Maturity Benchmark (19th ed., sponsored/published by Deltek)",
+   "url": "https://www.deltek.com/resources/articles/professional-services-benchmarks/",
+   "date": "2026-07",
+   "n": "500+ firms, 245,000 employees, $63bn PS revenue",
+   "note": "Source: 'project margins rose to 37.7% in 2025, continuing an upward trend from 35.9% in 2024'; EBITDA 9.9%, billable utilization 66.4% (record low), revenue per billable consultant $210k. Range = 2024 and 2025 medians. Project margin is the closest SPI metric to gross margin; SPI target is >35%. Full report is behind a form at info.deltek.com; figures verified on Deltek's summary page.",
+   "verified": true
+  },
+  {
+   "id": "margin.agency.2026",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "services",
+    "segment": "digital_agency"
+   },
+   "value": [
+    30,
+    37
+   ],
+   "unit": "% project margin, digital agencies; after-tax net margin 13 %",
+   "tier": "secondary",
+   "source": "Promethean Research, 2026 State of Digital Services / 'How profitable are digital agencies?'",
+   "url": "https://prometheanresearch.com/how-profitable-are-digital-agencies/",
+   "date": "2026-04",
+   "n": null,
+   "note": "Source: 'among agencies that tracked project margin (59% of sample), the average project margin was 35%'; 'agencies whose engagement sizes increased averaged 37%, agencies whose engagement sizes declined averaged 30%'. After-tax net margin 13% (2025), 19% for <10 FTE studios, 8% for 50+ FTE. Sample size not stated on page (average agency revenue $4.43M), hence secondary.",
+   "verified": true
+  },
+  {
+   "id": "margin.saas.2025",
+   "domain": "gross_margin_range",
+   "applies": {
+    "type": "saas"
+   },
+   "value": [
+    65,
+    80
+   ],
+   "unit": "% gross margin, private SaaS, bottom to top quartile (median ~75 %)",
+   "tier": "secondary",
+   "source": "KeyBanc Capital Markets / Sapphire Ventures 2025 Private SaaS Survey (16th ed., FY2024 data, 400+ companies) as summarised by Seeto",
+   "url": "https://seeto.ai/blog/keybanc-saas-survey-2025-takeaways",
+   "date": "2025-11",
+   "n": "400+ companies (per summary)",
+   "note": "Summary states: 'median gross margin ... approximately 75% ... top quartile consistently above 80%, bottom quartile closer to 65%'; median NDR ~108%, top quartile >120%; CAC payback ~18 months. The primary report (key.com, Nov 13 2025 press release https://investor.key.com/press-releases/news-details/2025/PRIVATE-SAAS-COMPANY-SURVEY-REVEALS-AI-DRIVEN-TRANSFORMATION-AND-SUSTAINED-OPERATIONAL-EXCELLENCE/default.aspx) is gated and its press release does not print the gross-margin figure, so this stays secondary; summary page contains minor provenance errors (calls it '15th annual', 'with Sage'). Replace with the report PDF when accessible.",
+   "verified": true
+  },
+  {
+   "id": "fte.cost.us.2026",
+   "domain": "capital_intensity",
+   "applies": {
+    "region": "US"
+   },
+   "value": [
+    9400,
+    16300
+   ],
+   "unit": "$ per FTE-month, fully loaded, mid-level engineer at seed-stage US startup",
+   "tier": "survey",
+   "source": "Kruze Consulting Startup Compensation Guide (payroll data, 450+ funded startups)",
+   "url": "https://kruzeconsulting.com/blog/startup-compensation-guide/",
+   "date": "2026-09",
+   "n": "450+ VC-backed startups (payroll records)",
+   "note": "Source table: mid-level engineer base $90,000-$130,000 in 'other major tech hubs' and $100,000-$145,000 in San Francisco; entry-level $65k-$105k; senior $125k-$185k; Kruze: 'plan for total compensation costs to be about 25-35% higher than base salary'. Method: low = $90k x 1.25 / 12 = $9,375; high = $145k x 1.35 / 12 = $16,313. US only; Western Europe not covered by this source. Seed CEO salary $132k (2024 data), $153k (2026 report).",
+   "verified": true,
+   "currency": "USD"
+  },
+  {
+   "id": "fte.cost.e_eu.2026",
+   "domain": "capital_intensity",
+   "applies": {
+    "region": "E_EU"
+   },
+   "value": [
+    3100,
+    10200
+   ],
+   "unit": "$ per FTE-month, senior software engineer, employer cost incl. on-costs (Ukraine low to Poland high)",
+   "tier": "secondary",
+   "source": "RemoteMore senior software engineer salary guide 2026 (aggregates Arc.dev, Lemon.io, Index.dev, Qubit Labs, GEOR, RemotifyEurope)",
+   "url": "https://blog.remotemore.com/senior-software-engineer-salary-guide-2026-bulgaria-poland-ukraine-romania-compared/",
+   "date": "2026-06",
+   "n": null,
+   "note": "Source table (senior, 5+ yrs, average annual remote comp): Poland $50,000-$100,000; Bulgaria $62,000-$95,000; Ukraine $32,000-$77,000; Romania $40,000-$76,000; 'full-time hires ... add 15-36% in employer costs depending on the country (Poland sits around 22%)'. Method: low = $32k x 1.15 / 12 = $3,067; high = $100k x 1.22 / 12 = $10,167. Mid-level engineers will sit below this band; source gives no n.",
+   "verified": true,
+   "currency": "USD"
+  },
+  {
+   "id": "fte.cost.latam.2026",
+   "domain": "capital_intensity",
+   "applies": {
+    "region": "LATAM"
+   },
+   "value": [
+    2300,
+    6700
+   ],
+   "unit": "$ per FTE-month, software developer base salary (full-time), employer on-costs NOT included",
+   "tier": "secondary",
+   "source": "South (hireinsouth.com), Software Developer Rates by Country 2026",
+   "url": "https://www.hireinsouth.com/post/software-developer-rates-by-country",
+   "date": "2026",
+   "n": null,
+   "note": "Source table (annual full-time salary): Mexico $35,000-$75,000; Brazil $30,000-$70,000; Argentina $35,000-$80,000; Colombia $28,000-$60,000. Method: low = $28k / 12 = $2,333; high = $80k / 12 = $6,667. Vendor page (nearshore recruiter), no n; add ~15-40% employer on-costs for full-time hires depending on country.",
+   "verified": true,
+   "currency": "USD"
+  },
+  {
+   "id": "cac.founder_led.cash.2026",
+   "domain": "cac",
+   "applies": {
+    "motion": "founder_led",
+    "type": "b2b"
+   },
+   "value": [
+    25,
+    170
+   ],
+   "unit": "$ cash per closed deal, prospecting tools only (events/travel excluded)",
+   "tier": "secondary",
+   "source": "Justin McKelvey, Founder-Led Sales guide (practitioner funnel targets); tool prices from same page",
+   "url": "https://justinmckelvey.com/blog/founder-led-sales",
+   "date": "2026-07",
+   "n": null,
+   "note": "Anecdotal, not a survey. Source targets: 20-40 outreach/week -> 5-10 discovery calls/week; 40-60% of calls qualified; 50-70% of qualified get a proposal; 30-50% of proposals close; tools: LinkedIn Sales Navigator $80/mo, Pipedrive $15/mo, HubSpot free. Method: conversations per closed deal = 1/(0.4..0.6 x 0.5..0.7 x 0.3..0.5) = 5-17; at 20-40 calls/month that is ~1.2-8 deals/month; tool spend ~$100-200/month -> $25-170 per deal. Events, travel and founder time are NOT in this figure; no survey with cash CAC per deal for founder-led sales was found in this pass. Founder time: ~10-15 hours per closed deal cited (Apollo, via blog.mean.ceo).",
+   "verified": true,
+   "currency": "USD"
+  },
+  {
+   "id": "capacity.founder_led.2026",
+   "domain": "growth_capacity_input",
+   "applies": {
+    "motion": "founder_led"
+   },
+   "value": [
+    5,
+    10
+   ],
+   "unit": "discovery calls per week, one founder spending 2-3 h/day on sales",
+   "tier": "secondary",
+   "source": "Justin McKelvey, Founder-Led Sales guide",
+   "url": "https://justinmckelvey.com/blog/founder-led-sales",
+   "date": "2026-07",
+   "n": null,
+   "note": "Source: 'During active sales mode, aim for 5-10 discovery calls per week. This requires 20-40 outreach messages per week ... Dedicate 2-3 hours daily to sales activities.' Practitioner target, not measured data; the old capacity.founder_led entry (8-15 meetings/week) assumed a founder full-time on sales.",
+   "verified": true
+  },
+  {
+   "id": "capacity.sdr.2025",
+   "domain": "growth_capacity_input",
+   "applies": {
+    "motion": "inside_sales"
+   },
+   "value": [
+    9,
+    16
+   ],
+   "unit": "held Stage-0 meetings per SDR per month (median quota); ramp 3.0 mo",
+   "tier": "survey",
+   "source": "The Bridge Group, SDR Models, Motions & Metrics 2025 (10th ed.)",
+   "url": "https://www.bridgegroupinc.com/research/2025-sdr-models-metrics-report-the-bridge-group",
+   "date": "2025-02",
+   "n": "351 B2B companies (78% North America, 83% B2B SaaS, median revenue $47M, median ASP $50K)",
+   "note": "Source: 'Monthly quota - Stage 0 held: 10 (global median), down 40% since 2018. Introductory model: 16.0. Semi-qualified: 10.4. Fully qualified: 9.0. Stage 1 Converted global median is 6'; average ramp 3.0 months; 60% of reps at quota; median SDR OTE $80K; pipeline sourced per SDR $3.78M/yr. Range = fully-qualified to introductory model quotas.",
+   "verified": true
+  },
+  {
+   "id": "nrr.b2b_saas.early.2025",
+   "domain": "net_revenue_retention_annual",
+   "applies": {
+    "type": "saas",
+    "stage": "early",
+    "min_arr": 250000
+   },
+   "value": [
+    82,
+    97
+   ],
+   "unit": "% annual NRR, median to upper quartile, B2B SaaS >= $250k ARR",
+   "tier": "survey",
+   "source": "ChartMogul / Kyle Poyar, SaaS Retention Report: The AI churn wave",
+   "url": "https://chartmogul.com/reports/saas-retention-the-ai-churn-wave/",
+   "date": "2025-12",
+   "n": "~2,700 B2B SaaS, ~600 B2C SaaS, ~200 AI-native companies (ChartMogul data, 2025)",
+   "note": "Source: 'B2B SaaS ... median NRR was 82%. (The upper quartile was 97%.)'; AI-native GRR 40% / NRR 48%; AI-native >$250/mo plans 70% GRR / 85% NRR, <$50/mo plans 23% GRR / 32% NRR. Contrast with SaaS Capital 2025 (>$1M ARR, scale-ups): median NRR 101%. Use this entry for pre-$1M ARR companies.",
+   "verified": true
+  },
+  {
+   "id": "nrr.consumer.2025",
+   "domain": "net_revenue_retention_annual",
+   "applies": {
+    "type": "consumer_subscription",
+    "min_arr": 250000
+   },
+   "value": [
+    48,
+    49
+   ],
+   "unit": "% annual NRR, median (B2C SaaS 49 %, AI-native 48 %)",
+   "tier": "survey",
+   "source": "ChartMogul / Kyle Poyar, SaaS Retention Report: The AI churn wave",
+   "url": "https://chartmogul.com/reports/saas-retention-the-ai-churn-wave/",
+   "date": "2025-12",
+   "n": "~600 B2C SaaS, ~200 AI-native companies >= $250k ARR",
+   "note": "Source: 'B2C is much less sticky with minimal upsell. The median NRR was only 49%'; 'AI-native companies had even worse GRR than B2C (40%) and comparable NRR (48%)'. Implies annual gross revenue churn of ~50 % for consumer subscription products at the median.",
+   "verified": true
+  },
+  {
+   "id": "expansion.consumer.2025",
+   "domain": "expansion_rate_range",
+   "applies": {
+    "type": "consumer_subscription"
+   },
+   "value": [
+    0,
+    0.7
+   ],
+   "unit": "% monthly expansion, derived",
+   "tier": "derived",
+   "source": "derived from nrr.consumer.2025 (ChartMogul Dec 2025)",
+   "url": "https://chartmogul.com/reports/saas-retention-the-ai-churn-wave/",
+   "date": "2025-12",
+   "n": null,
+   "note": "Method: annual expansion = NRR - GRR. B2C GRR is not printed by the source ('minimal upsell' -> lower bound 0); AI-native gap is 48 - 40 = 8 pts/yr -> (1.08)^(1/12)-1 = 0.64 %/mo, used as upper bound. Replaces the unverified expansion.consumer (0.5-1.5 %/mo), which overstated consumer upsell.",
+   "verified": true
+  },
+  {
+   "id": "expansion.seat_b2b.2025",
+   "domain": "expansion_rate_range",
+   "applies": {
+    "type": "saas",
+    "pricing": "seat",
+    "min_arr": 1000000
+   },
+   "value": [
+    0.5,
+    1.5
+   ],
+   "unit": "% monthly expansion, derived from NRR-GRR gap",
+   "tier": "derived",
+   "source": "derived from SaaS Capital 2025 SaaS Retention Benchmarks for Private B2B Companies",
+   "url": "https://www.saas-capital.com/blog-posts/what-is-a-good-retention-rate-for-a-private-saas-company/",
+   "date": "2025-09",
+   "n": "SaaS Capital annual survey, companies > $1M ARR (n not printed on page)",
+   "note": "Source page: ACV $25k-$50k median NRR 102%, top quartile 111%, lowest quartile 97%; overall survey median growth 24%. Research brief (linked PDF) reports overall median NRR 101% / GRR 91%. Method: annual expansion = NRR - GRR = ~6-20 pts (97-111 NRR vs ~91 GRR) -> (1.06)^(1/12)-1 = 0.49 %/mo to (1.20)^(1/12)-1 = 1.53 %/mo. Applies to scale-ups >$1M ARR; for pre-$1M ARR use nrr.b2b_saas.early.2025 (median NRR 82 %, i.e. net contraction).",
+   "verified": true
+  },
+  {
+   "id": "round.seed.eu.2025",
+   "domain": "typical_round",
+   "applies": {
+    "stage": "seed",
+    "region": "EU"
+   },
+   "value": [
+    1200000,
+    1600000
+   ],
+   "unit": "€ raised, median pre-seed/seed deal (combined bucket)",
+   "tier": "secondary",
+   "source": "PitchBook Q3 2025 European VC Valuations Report, as summarised by Development Corporate (report itself gated)",
+   "url": "https://developmentcorporate.com/saas/european-vc-valuations-2025-data-driven-analysis/",
+   "date": "2025-11",
+   "n": null,
+   "note": "Summary of PitchBook Q3 2025 (https://pitchbook.com/news/reports/q3-2025-european-vc-valuations-report): 'pre-seed and seed companies saw the largest increase in median deal sizes - jumping 33.3% to €1.6 million' (vs ~€1.2M in 2024); pre-seed/seed median pre-money valuation €5.0M; UK & Ireland pre-seed/seed deal size €1.2M; with CVC participation €2.5M vs €1.4M without. Range = 2024 to Q3-2025 medians. PitchBook's own article (https://pitchbook.com/news/articles/bigger-checks-higher-price-tags-vc-valuations-rise-in-europe) gives all-stage median European deal €2.5M in H1 2025. Dealroom.co standardises Seed as $1-7M and Pre-Seed as >$250K (<$1M), and reports ~$2.5-3M of pre-Series-A capital in Europe (https://dealroom.co/startup-journey-europe/). No Europe-specific pre-seed-only median found.",
+   "verified": true,
+   "currency": "EUR"
+  }
+ ]
+}

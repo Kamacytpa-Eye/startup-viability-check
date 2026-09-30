@@ -1,0 +1,82 @@
+{
+ "startup": "CoPostly",
+ "funding_path": "bootstrap",
+ "currency": "EUR",
+ "revenue_unit": "subscription",
+ "months": 36,
+ "unit_of_sale": "monthly done-for-you LinkedIn management retainer for a founder (ghostwriting, profile, visuals, scheduling), month-to-month",
+ "assumptions": {
+  "pricing": {
+   "founder": 1500,
+   "market": [
+    1850,
+    3700
+   ],
+   "status": "founder_stated",
+   "source": "published price €1 500/mo (magicpost.in review, Jan 2026); market: agency retainer mid tier 12–16 posts $2 000–4 000/mo (Windmill Growth via magicpost.in ghostwriting-rates, Sep 2026) × 0.92 EUR/USD"
+  },
+  "gross_margin": {
+   "market": [
+    40,
+    65
+   ],
+   "source": "margin.services — agency delivery margin (secondary, unverified entry)"
+  },
+  "monthly_churn": {
+   "market": [
+    1.8,
+    4.2
+   ],
+   "source": "churn.agency.project.2025 — retainer agencies: >20 %/yr is a red flag; 20–40 %/yr → 1−(1−a)^(1/12) = 1.8–4.2 %/mo (secondary)"
+  },
+  "expansion": {
+   "market": [
+    0,
+    2
+   ],
+   "source": "upsell from €1 500 management to €2 500 lead-gen tier; expansion.seat_b2b lower half (secondary, unverified)"
+  },
+  "cac": {
+   "market": [
+    50,
+    300
+   ],
+   "source": "денежные расходы на одного подписанного клиента при продажах через контент основателя: Sales Navigator, инструменты, мероприятия; оценка аналитика по аналогии с cac.microsaas.organic.2025 (0–50 $ без учёта времени) плюс инструменты; время команды — в зарплатах",
+   "market_status": "derived"
+  },
+  "new_customers_per_month": {
+   "market": [
+    1,
+    3
+   ],
+   "source": "capacity.founder_led: inbound from founder content + 30-min calls, one part-time seller; 1–3 signed retainers/mo (secondary)",
+   "market_status": "derived"
+  },
+  "fte_cost": {
+   "market": [
+    2500,
+    6000
+   ],
+   "source": "fte.cost.e_eu_latam / fte.cost.region — remote team of ~4 FTE across Europe (secondary, unverified)"
+  }
+ },
+ "growth": {
+  "motion": "founder_led",
+  "ramp_mid_month": 2,
+  "sales_cycle_months": 1,
+  "funnel": [
+   {
+    "step": "30-min calls / month",
+    "value": "4–10",
+    "source": "founder content + 7-day email course, estimate"
+   },
+   {
+    "step": "→ signed retainer",
+    "value": "25–35 %",
+    "source": "conv.demo.close.smb (secondary)"
+   }
+  ]
+ },
+ "fte": 4,
+ "sales_share_of_payroll": 0.25
+}

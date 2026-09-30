@@ -1,0 +1,38 @@
+{
+  "startup": "DentiQueue",
+  "name": "DentiQueue",
+  "revenue_unit": "subscription",
+  "unit_of_sale": "monthly subscription per dental clinic: automatic waitlist slot-filling + appointment reminders (€149/clinic/month, monthly, no contract)",
+  "months": 36,
+  "currency": "EUR",
+  "fx_rates": {"USD_per_EUR": 1.10},
+  "funding_path": "pre_seed",
+  "cash_on_hand": 40000,
+  "growth": {
+    "motion": "founder_led",
+    "ramp_mid_month": 1,
+    "sales_cycle_months": 0,
+    "funnel": [
+      {"step": "LinkedIn outreach + dental-association events → demos per month", "value": 8, "source": "founder_stated ('about 8 demos a month'); capacity benchmark capacity.founder_led 8–15 meetings/week (unverified) is far above this"},
+      {"step": "demo → paying clinic (%)", "value": 25, "source": "founder_stated ('roughly one in four'); market conv.demo.close.smb 15–30 % · secondary"},
+      {"step": "new clinics per month at full capacity", "value": 2, "source": "computed: 8 × 25 %; market 1.2–2.4 = 8 × 15–30 %"}
+    ]
+  },
+  "assumptions": {
+    "pricing": {"founder": 149, "market": [99, 169], "status": "founder_stated", "market_status": "cited", "source": "Dr. Flex Booking-Flat €99 (1 calendar) – €169 (3 calendars) per practice per month, incl. digitale Nachrückerliste + reminders, published prices https://dr-flex.de/aerzte/preis · primary · 2026"},
+    "gross_margin": {"founder": 91.9, "market": [70, 90], "status": "founder_stated", "market_status": "library", "source": "margin.saas · survey · 2024 (stale; no fresher primary found in this run)"},
+    "monthly_churn": {"founder": 0, "market": [3, 7], "status": "founder_stated", "market_status": "library", "source": "churn.saas.smb.2026 · secondary · 2026-01; ChartMogul <$300k ARR median 6.5 %/month"},
+    "cac": {"founder": 100, "status": "founder_stated"},
+    "new_customers_per_month": {"founder": 2, "market": [1.2, 2.4], "status": "founder_stated", "market_status": "derived", "source": "derived: 8 demos/month (founder_stated) × conv.demo.close.smb 15–30 % demo→close · secondary"},
+    "fte_cost": {"founder": 3000, "market": [3788, 8182], "status": "founder_stated", "market_status": "derived", "source": "derived: low = Kruze Consulting US pre-seed founder salary ~$50k/yr ÷ 12 ÷ 1.10 (secondary, 2025); high = fte.cost.region mid $9 000 ÷ 1.10 (secondary, unverified)"}
+  },
+  "fte": 2,
+  "fixed_costs_monthly": 0,
+  "upfront_investment": 0,
+  "free_months": 1,
+  "starting_customers": 6,
+  "starting_mrr": 894,
+  "founder_time_cost_per_customer": 281,
+  "sales_share_of_payroll": 0.5,
+  "comparable_benchmark": {"segment_size": 3768, "comparable_penetration_pct": [1, 3]}
+}
