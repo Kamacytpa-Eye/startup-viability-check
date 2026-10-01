@@ -23,7 +23,7 @@ Early-stage founders deciding whether to invest the next three months; mentors p
 
 ## Install
 
-**Claude Cowork / claude.ai:** download `startup-viability-check.skill` from the latest release and import it in *Settings → Skills*. Then ask Claude: *"Check whether this idea is viable: …"* (or in Russian: *"проверь идею …"*).
+**Claude Cowork / claude.ai:** download [`startup-viability-check.skill` from the v1.0 release](https://github.com/Kamacytpa-Eye/startup-viability-check/releases/tag/v1.0) and import it in *Settings → Skills*. Then ask Claude: *"Check whether this idea is viable: …"* (or in Russian: *"проверь идею …"*).
 
 **Claude Code / any agent runtime:** clone this repository into your skills folder.
 
